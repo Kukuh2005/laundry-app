@@ -1,50 +1,40 @@
 @extends('layout.app')
 
-@section('title', 'Paket')
+@section('title', 'Pelanggan')
 
-@section('content-header', 'Data Paket')
+@section('content-header', 'Data Pelanggan')
 
 @section('content')
-<div class="col-md-10 mb-2">
-    <div class="card">
-        <div class="btn-group" role="group" aria-label="Basic example">
-            <a href="/paket" class="btn btn-outline-primary">Kiloan</a>
-            <a href="/paket/satuan" class="btn btn-outline-primary">Satuan</a>
-        </div>
-    </div>
-</div>
-<div class="col-md-2 mb-2">
-    <div class="card">
-        <button type="button" class="btn btn-success" data-bs-toggle="modal"
-            data-bs-target="#modal-tambah">Tambah</button>
-    </div>
-</div>
 <div class="col-md-12">
     <div class="card">
+        <div class="btn-tambah float-end m-2">
+            <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#modal-tambah">Tambah</button>
+        </div>
         <div class="table-responsive text-nowrap mt-2 mb-2">
             <table class="table table-striped" id="table">
                 <thead>
                     <tr>
                         <td>No</td>
                         <td>Nama</td>
-                        <td>Jenis</td>
-                        <td>Harga</td>
+                        <td>Telepon</td>
+                        <td>Alamat</td>
                         <td>Aksi</td>
                     </tr>
                 </thead>
                 <tbody class="table-border-bottom-0">
-                    @foreach($paket as $item)
+                    @foreach($pelanggan as $item)
                     <tr>
                         <td>{{$loop->iteration}}</td>
-                        <td>{{$item->nama}}</td>
-                        <td>{{$item->jenis}}</td>
-                        <td>{{$item->harga}}</td>
+                        <td>{{$item->nama_pelanggan}}</td>
+                        <td>{{$item->telepon}}</td>
+                        <td>{{$item->alamat}}</td>
                         <td>
-                            <form action="/paket/{{$item->id}}/delete">
+                            <form action="/pelanggan/{{$item->id}}/delete" id="delete-form">
                                 @method('DELETE')
                                 @csrf
-                                <a href="/paket/{{$item->id}}/edit" class="btn btn-warning btn-sm">Edit</a>
-                                <button type="button" class="btn btn-danger btn-sm" onclick="confirmDelete({{$item->id}})">Hapus</button>
+                                <a href="/pelanggan/{{$item->id}}/edit" class="btn btn-warning btn-sm">Edit</a>
+                                <button type="button" class="btn btn-danger btn-sm"
+                                    onclick="confirmDelete({{$item->id}})">Hapus</button>
                             </form>
                         </td>
                     </tr>
@@ -54,7 +44,7 @@
         </div>
     </div>
 </div>
-@include('paket.form')
+@include('pelanggan.form')
 @endsection
 @push('script')
 <script>
@@ -101,5 +91,6 @@
                 }
             });
     }
+
 </script>
 @endpush

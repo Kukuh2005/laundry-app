@@ -12,7 +12,9 @@ class PelangganController extends Controller
      */
     public function index()
     {
-        //
+        $pelanggan = Pelanggan::all();
+
+        return view('pelanggan.index', compact('pelanggan'));
     }
 
     /**
@@ -28,7 +30,13 @@ class PelangganController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $pelanggan = new Pelanggan;
+        $pelanggan->nama_pelanggan = $request->nama_pelanggan;
+        $pelanggan->telepon = $request->telepon;
+        $pelanggan->alamat = $request->alamat;
+        $pelanggan->save();
+
+        return redirect('pelanggan')->with('sukses', 'Tambah data berhasil');
     }
 
     /**
@@ -42,24 +50,36 @@ class PelangganController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(pelanggan $pelanggan)
+    public function edit($id)
     {
-        //
+        $pelanggan = Pelanggan::find($id);
+        
+        return view('pelanggan.edit', compact('pelanggan'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, pelanggan $pelanggan)
+    public function update(Request $request, $id)
     {
-        //
+        $pelanggan = Pelanggan::find($id);
+        $pelanggan->nama_pelanggan = $request->nama_pelanggan;
+        $pelanggan->telepon = $request->telepon;
+        $pelanggan->alamat = $request->alamat;
+        $pelanggan->update();
+
+        return redirect('pelanggan')->with('sukses', 'Edit data berhasil');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(pelanggan $pelanggan)
+    public function destroy($id)
     {
-        //
+        $pelanggan = Pelanggan::find($id);
+
+        $pelanggan->delete();
+
+        return redirect('pelanggan')->with('sukses', 'Hapus data berhasil');
     }
 }

@@ -47,7 +47,11 @@
     <!--? Config:  Mandatory theme config file contain global vars & default theme options, Set your preferred theme option in this file.  -->
     <script src="{{asset('/assets/js/config.js')}}"></script>
 </head>
-
+<style>
+    .swal-button-container {
+        align-items: center;
+    }
+</style>
 <body>
     <!-- Layout wrapper -->
     <div class="layout-wrapper layout-content-navbar">
