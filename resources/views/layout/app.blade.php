@@ -39,6 +39,9 @@
     <link rel="stylesheet" href="{{asset('assets/vendor/datatables/DataTables-1.10.16/css/dataTables.bootstrap4.min.css')}}">
     <link rel="stylesheet" href="{{asset('assets/vendor/datatables/Select-1.2.4/css/select.bootstrap4.min.css')}}">
 
+    <!-- fontawesome -->
+    <link rel="stylesheet" href="{{asset('assets/vendor/fontawesome/css/all.min.css')}}">
+
     <link rel="stylesheet" href="{{asset('assets/vendor/izitoast/css/iziToast.min.css')}}">
     <!-- Helpers -->
     <script src="{{asset('/assets/vendor/js/helpers.js')}}"></script>

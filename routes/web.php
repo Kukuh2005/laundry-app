@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PaketController;
 use App\Http\Controllers\PelangganController;
+use App\Http\Controllers\TransaksiController;
 
 /*
 |--------------------------------------------------------------------------
@@ -35,3 +36,5 @@ Route::post('/pelanggan/store', [PelangganController::class, 'store']);
 Route::get('/pelanggan/{id}/delete', [PelangganController::class, 'destroy']);
 Route::get('/pelanggan/{id}/edit', [PelangganController::class, 'edit']);
 Route::put('/pelanggan/{id}/update', [PelangganController::class, 'update']);
+
+Route::get('/transaksi', [TransaksiController::class, 'index']);

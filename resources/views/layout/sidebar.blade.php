@@ -18,7 +18,7 @@
                     <!-- Dashboard -->
                     <li class="menu-item">
                         <a href="/dashboard" class="menu-link">
-                            <i class="menu-icon tf-icons bx bx-home-circle"></i>
+                            <i class="fas fa-tachometer-alt me-3"></i>
                             <div data-i18n="Analytics">Dashboard</div>
                         </a>
                     </li>
@@ -26,8 +26,8 @@
                     <!-- Layouts -->
                     <li class="menu-item">
                         <a href="javascript:void(0);" class="menu-link menu-toggle">
-                            <i class="menu-icon tf-icons bx bx-layout"></i>
-                            <div data-i18n="Layouts">Dara Master</div>
+                            <i class="fas fa-table me-3"></i>
+                            <div data-i18n="Layouts">Data Master</div>
                         </a>
 
                         <ul class="menu-sub">
@@ -42,6 +42,20 @@
                                 </a>
                             </li>
                         </ul>
+                    </li>
+
+                    <li class="menu-item">
+                        <a href="/transaksi" class="menu-link">
+                            <i class="fas fa-shopping-cart me-3"></i>
+                            <div data-i18n="Analytics">Transaksi</div>
+                        </a>
+                    </li>
+
+                    <li class="menu-item">
+                        <a href="/order" class="menu-link">
+                            <i class="fas fa-truck me-3"></i>
+                            <div data-i18n="Analytics">Order</div>
+                        </a>
                     </li>
                 </ul>
             </aside>

@@ -7,7 +7,7 @@
 @section('content')
 <div class="col-md-12">
     <div class="card">
-        <div class="btn-tambah float-end m-2">
+        <div class="btn-tambah m-2">
             <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#modal-tambah">Tambah</button>
         </div>
         <div class="table-responsive text-nowrap mt-2 mb-2">

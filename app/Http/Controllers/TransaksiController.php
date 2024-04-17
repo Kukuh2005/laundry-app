@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Transaksi;
+use App\Models\Pelanggan;
+use App\Models\Paket;
 use Illuminate\Http\Request;
+use Carbon\Carbon;
 
 class TransaksiController extends Controller
 {
@@ -12,7 +15,23 @@ class TransaksiController extends Controller
      */
     public function index()
     {
-        //
+        $pelanggan = Pelanggan::all();
+        $paket = Paket::all();
+
+        $now = Carbon::now();
+        $tahun_bulan = $now->year . $now->month;
+        $cek = Transaksi::count();
+        
+        if($cek == 0){
+            $urut = 10000001;
+            $nomor = $tahun_bulan . $urut;
+        }else {
+            $ambil = Transaksi::all()->last();
+            $urut = (int)substr($ambil->kode_transaksi, -8) + 1;
+            $nomor = $tahun_bulan . $urut;
+        }
+
+        return view('transaksi.index', compact('pelanggan', 'paket', 'nomor'));
     }
 
     /**
