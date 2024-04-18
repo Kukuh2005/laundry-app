@@ -18,6 +18,7 @@ return new class extends Migration
             $table->date('tanggal');
             $table->date('tanggal_selesai');
             $table->integer('paket_id');
+            $table->float('jumlah');
             $table->string('status');
             $table->float('total');
             $table->string('status_pembayaran');
