@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PaketController;
 use App\Http\Controllers\PelangganController;
 use App\Http\Controllers\TransaksiController;
+use App\Http\Controllers\TransaksiSementaraController;
 
 /*
 |--------------------------------------------------------------------------
@@ -37,4 +38,8 @@ Route::get('/pelanggan/{id}/delete', [PelangganController::class, 'destroy']);
 Route::get('/pelanggan/{id}/edit', [PelangganController::class, 'edit']);
 Route::put('/pelanggan/{id}/update', [PelangganController::class, 'update']);
 
-Route::get('/transaksi', [TransaksiController::class, 'index']);
+Route::get('/transaksi', [TransaksiSementaraController::class, 'index']);
+Route::get('/transaksi/{pelanggan_id}', [TransaksiSementaraController::class, 'create']);
+Route::post('/transaksi/{pelanggan_id}/store', [TransaksiSementaraController::class, 'store']);
+Route::get('/transaksi/{id}/{pelanggan_id}/delete', [TransaksiSementaraController::class, 'destroy']);
+Route::post('/transaksi/{pelanggan_id}/bayar', [TransaksiController::class, 'bayar']);
