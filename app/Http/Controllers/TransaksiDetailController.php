@@ -50,9 +50,13 @@ class TransaksiDetailController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, TransaksiDetail $transaksiDetail)
+    public function update(Request $request, $id, $kode)
     {
-        //
+        $transaksiDetail = TransaksiDetail::find($id);
+        $transaksiDetail->status = $request->status;
+        $transaksiDetail->update();
+
+        return redirect('transaksi/' . $kode . '/edit')->with('sukses', 'Status berhasil update');
     }
 
     /**

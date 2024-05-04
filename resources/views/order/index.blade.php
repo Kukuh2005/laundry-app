@@ -1,15 +1,22 @@
 @extends('layout.app')
 
-@section('title', 'Transaksi')
+@section('title', 'Order')
 
-@section('content-header', 'Transaksi')
+@section('content-header', 'Data Order')
 
 @section('content')
+<div class="col-md-12 mb-2">
+    <div class="card">
+        <div class="btn-group" role="group" aria-label="Basic example">
+            <a href="/order" class="btn btn-outline-primary">Belum Bayar ({{$belum_bayar->count()}})</a>
+            <a href="/order/proses" class="btn btn-outline-primary">Proses ({{$proses->count()}})</a>
+            <a href="/order/siap-ambil" class="btn btn-outline-primary">Siap Ambil ({{$siap_ambil->count()}})</a>
+            <a href="/order/selesai" class="btn btn-outline-primary">Selesai ({{$selesai->count()}})</a>
+        </div>
+    </div>
+</div>
 <div class="col-md-12">
     <div class="card">
-        <div class="btn-tambah m-2">
-            <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#modal-tambah">Tambah</button>
-        </div>
         <div class="table-responsive text-nowrap mt-2 mb-2">
             <table class="table table-striped" id="table">
                 <thead>
@@ -33,8 +40,7 @@
                         <td>{{$item->status_pembayaran}}</td>
                         <td>{{$item->user->name}}</td>
                         <td>
-                            <!-- <a href="/transaksi/{{$item->kode}}/edit" class="btn btn-warning btn-sm d-block m-2">Edit</a> -->
-                            <a href="/transaksi/{{$item->kode}}/detail" class="btn btn-primary btn-sm d-block" >Detail</a>
+                            <button type="button" class="btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#modal-edit{{$item->kode}}">Edit</button>
                         </td>
                     </tr>
                     @endforeach
@@ -43,15 +49,23 @@
         </div>
     </div>
 </div>
-@include('transaksi.formPelanggan')
+@include('order.editPembayaran')
 @endsection
 @push('script')
 <script>
     $(document).ready(function () {
         $('#table').DataTable();
     });
-    $(document).ready(function () {
-        $('#table-pelanggan').DataTable();
-    });
+
+    function toggleHidden() {
+        var select = document.getElementById('status_pembayaran_select');
+        var row = document.getElementById('bayar_kembali_row');
+        
+        if (select.value === 'Sudah Bayar') {
+            row.removeAttribute('hidden');
+        } else {
+            row.setAttribute('hidden', 'true');
+        }
+    }
 </script>
 @endpush

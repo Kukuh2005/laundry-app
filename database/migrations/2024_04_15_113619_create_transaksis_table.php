@@ -19,7 +19,6 @@ return new class extends Migration
             $table->float('total');
             $table->float('bayar');
             $table->float('kembali');
-            $table->string('status');
             $table->string('status_pembayaran');
             $table->float('user_id');
             $table->timestamps();

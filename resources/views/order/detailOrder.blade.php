@@ -1,22 +1,18 @@
 @extends('layout.app')
 
-@section('title', 'Paket')
+@section('title', 'Order')
 
-@section('content-header', 'Data Paket')
+@section('content-header', 'Data Order')
 
 @section('content')
-<div class="col-md-10 mb-2">
+<div class="col-md-12 mb-2">
     <div class="card">
         <div class="btn-group" role="group" aria-label="Basic example">
-            <a href="/paket" class="btn btn-outline-primary">Kiloan</a>
-            <a href="/paket/satuan" class="btn btn-outline-primary">Satuan</a>
+            <a href="/order" class="btn btn-outline-primary">Belum Bayar ({{$belum_bayar->count()}})</a>
+            <a href="/order/proses" class="btn btn-outline-primary">Proses ({{$proses->count()}})</a>
+            <a href="/order/siap-ambil" class="btn btn-outline-primary">Siap Ambil ({{$siap_ambil->count()}})</a>
+            <a href="/order/selesai" class="btn btn-outline-primary">Selesai ({{$selesai->count()}})</a>
         </div>
-    </div>
-</div>
-<div class="col-md-2 mb-2">
-    <div class="card">
-        <button type="button" class="btn btn-success" data-bs-toggle="modal"
-            data-bs-target="#modal-tambah">Tambah</button>
     </div>
 </div>
 <div class="col-md-12">
@@ -26,26 +22,25 @@
                 <thead>
                     <tr>
                         <td>No</td>
-                        <td>Nama</td>
-                        <td>Jenis</td>
-                        <td>Harga</td>
+                        <td>Kode</td>
+                        <td>Pelanggan</td>
+                        <td>Paket</td>
+                        <td>Tanggal Selesai</td>
+                        <td>Status</td>
                         <td>Aksi</td>
                     </tr>
                 </thead>
                 <tbody class="table-border-bottom-0">
-                    @foreach($paket as $item)
+                    @foreach($transaksi as $item)
                     <tr>
                         <td>{{$loop->iteration}}</td>
-                        <td>{{$item->nama}}</td>
-                        <td>{{$item->jenis}}</td>
-                        <td>{{$item->formatRupiah('harga')}}</td>
+                        <td>{{$item->kode}}</td>
+                        <td>{{$item->pelanggan->nama_pelanggan}}</td>
+                        <td>{{$item->paket->nama}}</td>
+                        <td>{{$item->tanggal_selesai}}</td>
+                        <td>{{$item->status}}</td>
                         <td>
-                            <form action="/paket/{{$item->id}}/delete">
-                                @method('DELETE')
-                                @csrf
-                                <a href="/paket/{{$item->id}}/edit" class="btn btn-warning btn-sm">Edit</a>
-                                <button type="button" class="btn btn-danger btn-sm" onclick="confirmDelete({{$item->id}})">Hapus</button>
-                            </form>
+                            <button type="button" class="btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#modal-edit{{$item->kode}}">Edit</button>
                         </td>
                     </tr>
                     @endforeach
@@ -54,7 +49,8 @@
         </div>
     </div>
 </div>
-@include('paket.form')
+@include('order.form')
+@include('order.editStatus')
 @endsection
 @push('script')
 <script>

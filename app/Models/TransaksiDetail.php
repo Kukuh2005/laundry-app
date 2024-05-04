@@ -4,10 +4,14 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Traits\HasFormatRupiah;
+use App\Models\Paket;
+use App\Models\Pelanggan;
 
 class TransaksiDetail extends Model
 {
     use HasFactory;
+    use HasFormatRupiah;
 
     protected $fillable = [
         'kode',
@@ -19,4 +23,15 @@ class TransaksiDetail extends Model
         'tanggal',
         'total',
     ];
+
+    public function Paket()
+    {
+        return $this->belongsTo(Paket::class);
+    }
+
+    public function Pelanggan()
+    {
+        return $this->belongsTo(Pelanggan::class);
+    }
+
 }

@@ -22,9 +22,9 @@
                             @foreach($keranjang as $item)
                             <tr>
                                 <td>{{$loop->iteration}}</td>
-                                <td>{{$item->paket_id}}</td>
+                                <td>{{$item->paket->nama}}</td>
                                 <td>{{$item->jumlah}}</td>
-                                <td>{{$item->total}}</td>
+                                <td>{{$item->formatRupiah('total')}}</td>
                                 <td>
                                     <form action="/transaksi/{{$item->id}}/{{$pelanggan->id}}/delete" id="delete-form">
                                         @method('DELETE')

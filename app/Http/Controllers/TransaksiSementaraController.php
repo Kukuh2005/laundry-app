@@ -17,7 +17,7 @@ class TransaksiSementaraController extends Controller
      */
     public function index()
     {
-        $transaksi = Transaksi::all();
+        $transaksi = Transaksi::orderBy('created_at', 'desc')->get();
         $pelanggan = Pelanggan::all();
 
         return view('transaksi.index', compact('transaksi', 'pelanggan'));
@@ -55,17 +55,19 @@ class TransaksiSementaraController extends Controller
         $keranjang = TransaksiSementara::where('pelanggan_id', $pelanggan_id)->get();
 
         $get_sub_total = TransaksiSementara::where('pelanggan_id', $pelanggan_id)->get();
-        $jumlah = 0;
+        $sub_total = 0;
         
         if($get_sub_total){
             foreach($get_sub_total as $data){
-                $jumlah += $data->total;
+                $sub_total += $data->total;
             }
         }else{
-            $jumlah = 0;
+            $sub_total = 0;
         }
 
-        return view('transaksi.transaksi', compact('pelanggan', 'paket', 'keranjang', 'jumlah'));
+        $total = number_format($sub_total, 0, ',', '.');
+
+        return view('transaksi.transaksi', compact('pelanggan', 'paket', 'keranjang', 'total', 'sub_total'));
     }
 
     /**

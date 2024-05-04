@@ -11,9 +11,9 @@
                     <div class="row">
                         <div class="col mb-3">
                             <label for="nameWithTitle" class="form-label">Total</label>
-                            <h1 class="text-info float-end">{{$jumlah}}</h1>
+                            <h1 class="text-info float-end">{{$total}}</h1>
                             <h1 class="text-info float-end me-1">Rp</h1>
-                            <input type="text" name="total" value="{{$jumlah}}" hidden>
+                            <input type="text" name="total" value="{{$sub_total}}" hidden>
                         </div>
                     </div>
                     <div class="row">
@@ -31,10 +31,6 @@
                             <label for="emailWithTitle" class="form-label">Bayar</label>
                             <input type="text" id="emailWithTitle" class="form-control" name="bayar"
                                 oninput="this.value = this.value.replace(/[^\d.]/g, '').replace(/(\..*)\./g, '$1');">
-                        </div>
-                        <div class="col mb-0">
-                            <label for="dobWithTitle" class="form-label">Kembali</label>
-                            <input type="text" id="dobWithTitle" class="form-control" name="kembali" readonly>
                         </div>
                     </div>
             </div>

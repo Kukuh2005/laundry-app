@@ -9,6 +9,7 @@ use App\Models\Pelanggan;
 use App\Models\Paket;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Auth;
 
 class TransaksiController extends Controller
 {
@@ -51,16 +52,17 @@ class TransaksiController extends Controller
         }
 
         if($request->status_pembayaran == "Belum Bayar"){
+            $kembali = $request->bayar - $request->total;
+            
             $transaksi = new Transaksi;
             $transaksi->kode = $nomor;
             $transaksi->pelanggan_id = $pelanggan_id;
             $transaksi->tanggal = $tanggal_sekarang;
             $transaksi->total = $request->total;
-            $transaksi->bayar = 0;
-            $transaksi->kembali = 0;
-            $transaksi->status = "proses";
+            $transaksi->bayar = $request->bayar;
+            $transaksi->kembali = $kembali;
             $transaksi->status_pembayaran = $request->status_pembayaran;
-            $transaksi->user_id = 1;
+            $transaksi->user_id = Auth()->user()->id;
             $transaksi->save();
 
             $transaksi_sementara = TransaksiSementara::where('pelanggan_id', $pelanggan_id)->get();
@@ -72,8 +74,8 @@ class TransaksiController extends Controller
                 $transaksi_detail->tanggal = $data->tanggal;
                 $transaksi_detail->tanggal_selesai = $data->tanggal_selesai;
                 $transaksi_detail->paket_id = $data->paket_id;
-                $transaksi_detail->jumlah = $data->jumlah;
-                $transaksi_detail->status = $data->status;
+                $transaksi_detail->jumlah = $data->jumlah;    
+                $transaksi_detail->status = "Proses";    
                 $transaksi_detail->total = $data->total;
                 $transaksi_detail->save();
             }
@@ -81,19 +83,20 @@ class TransaksiController extends Controller
             foreach($transaksi_sementara as $data){
                 $data->delete();
             }
-
+            
             return redirect('transaksi')->with('sukses', 'Transaksi berhasil');
         }else{
+            $kembali = $request->bayar - $request->total;
+
             $transaksi = new Transaksi;
             $transaksi->kode = $nomor;
             $transaksi->pelanggan_id = $pelanggan_id;
             $transaksi->tanggal = $tanggal_sekarang;
             $transaksi->total = $request->total;
             $transaksi->bayar = $request->bayar;
-            $transaksi->kembali = $request->kembali;
-            $transaksi->status = "Proses";
+            $transaksi->kembali = $kembali;
             $transaksi->status_pembayaran = $request->status_pembayaran;
-            $transaksi->user_id = 1;
+            $transaksi->user_id = Auth()->user()->id;
             $transaksi->save();
 
             $transaksi_sementara = TransaksiSementara::where('pelanggan_id', $pelanggan_id)->get();
@@ -103,10 +106,10 @@ class TransaksiController extends Controller
                 $transaksi_detail->kode = $nomor;
                 $transaksi_detail->pelanggan_id = $data->pelanggan_id;
                 $transaksi_detail->tanggal = $data->tanggal;
-                $transaksi_detail->tangal_selesai = $data->tangal_selesai;
+                $transaksi_detail->tanggal_selesai = $data->tanggal_selesai;
                 $transaksi_detail->paket_id = $data->paket_id;
-                $transaksi_detail->jumlah = $data->jumlah;
-                $transaksi_detail->status = $data->status;
+                $transaksi_detail->jumlah = $data->jumlah;  
+                $transaksi_detail->status = "Proses";      
                 $transaksi_detail->total = $data->total;
                 $transaksi_detail->save();
             }
@@ -122,17 +125,24 @@ class TransaksiController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Transaksi $transaksi)
+    public function show(Transaksi $transaksi, $kode)
     {
-        //
+        $transaksi_detail = TransaksiDetail::where('kode', $kode)->get();
+        $transaksi = Transaksi::where('kode', $kode)->get();
+        $kode = $kode;
+    
+        return view('transaksi.detail', compact('transaksi_detail', 'kode'));
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Transaksi $transaksi)
+    public function edit(Transaksi $transaksi, $kode)
     {
-        //
+        $transaksi_detail = TransaksiDetail::where('kode', $kode)->get();
+        $kode = $kode;
+
+        return view('transaksi.edit', compact('transaksi_detail', 'kode'));
     }
 
     /**

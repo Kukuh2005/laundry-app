@@ -25,7 +25,7 @@
                             </select>
                         </div>
                         <div class="col-md-6">
-                            <h1 class="text-info float-end">{{$jumlah}}</h1>
+                            <h1 class="text-info float-end">{{$total}}</h1>
                             <h1 class="text-info float-end me-1">Rp</h1>
                         </div>
                     </div>
@@ -39,12 +39,12 @@
                                 @foreach($paket as $item)
                                 @if($item->jenis == 'kiloan')
                                 <optgroup label="Paket Kiloan">
-                                    <option value="{{$item->id}}">{{$item->nama}} ({{$item->harga}})</option>
+                                    <option value="{{$item->id}}">{{$item->nama}} ({{$item->formatRupiah('harga')}})</option>
                                 </optgroup>
                                 @endif
                                 @if($item->jenis == 'satuan')
                                 <optgroup label="Paket Satuan">
-                                    <option value="{{$item->id}}">{{$item->nama}} ({{$item->harga}})</option>
+                                    <option value="{{$item->id}}">{{$item->nama}} ({{$item->formatRupiah('harga')}})</option>
                                 </optgroup>
                                 @endif
                                 @endforeach
@@ -78,7 +78,7 @@
                 </div>
             </div>
             <button type="submit" class="btn btn-success">Tambah</button>
-            @if($jumlah != 0)
+            @if($total != 0)
             <button type="button" class="btn btn-primary float-end" data-bs-toggle="modal" data-bs-target="#modal-bayar">Simpan</button>
             @endif
         </form>
