@@ -132,7 +132,7 @@
                       </g>
                     </svg>
                   </span>
-                  <span class="app-brand-text demo text-body fw-bolder">Sneat</span>
+                  <span class="app-brand-text demo text-body fw-bolder">Laundry App</span>
                 </a>
               </div>
               <!-- /Logo -->
@@ -171,8 +171,10 @@
                 <div class="mb-3">
                   <label for="level" class="form-label">Level</label>
                   <select name="level" class="form-control" id="">
-                    <option value="">choose your role/level</option>
+                    <option value="">Choose your role/level</option>
+                    @if($user->where('level', 'Admin')->count() == 0)
                     <option value="Admin">Admin</option>
+                    @endif
                     <option value="Karyawan">Karyawan</option>
                   </select>
                 </div>

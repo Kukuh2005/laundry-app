@@ -74,4 +74,15 @@ class OrderController extends Controller
         }
 
     }
+
+    public function cek(){
+        return view('order.cekOrder');
+    }
+
+    public function cari(Request $request){
+        $transaksi = Transaksi::where('kode', $request->kode)->get();
+        $transaksi_detail = TransaksiDetail::where('kode', $request->kode)->get();
+
+        return view('order.orderCari', compact('transaksi', 'transaksi_detail'));
+    }
 }

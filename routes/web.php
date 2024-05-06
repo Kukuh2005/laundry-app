@@ -22,13 +22,16 @@ use Illuminate\Support\Facades\Auth;
 |
 */
 
-Route::get('/', [AuthController::class, 'index'])->name('login');
+Route::get('/', [AuthController::class, 'home'])->name('home');
 
 Route::get('/login', [AuthController::class, 'index'])->name('login');
 Route::post('/postlogin', [AuthController::class, 'postlogin']);
 Route::get('/daftar', [AuthController::class, 'daftar']);
 Route::post('/user/daftar', [AuthController::class, 'store'])->name('store');
 Route::get('/logout', [AuthController::class, 'logout']);
+
+Route::get('/cek-order', [OrderController::class, 'cek']);
+Route::get('/cek-order/cari', [OrderController::class, 'cari']);
 
 Route::group(['middleware' => ['auth', 'ceklevel:Admin,Karyawan']], function(){
     Route::get('/dashboard', [DashboardController::class, 'index']);

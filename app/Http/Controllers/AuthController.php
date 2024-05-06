@@ -19,6 +19,7 @@ class AuthController extends Controller
     public function daftar()
     {
         $user = User::all();
+        
         return view('auth.daftar', compact('user'));
     }
 
@@ -73,5 +74,9 @@ class AuthController extends Controller
     public function forgotPw()
     {
         return view('auth.forgotPassword');
+    }
+
+    public function home(){
+        return view('index');
     }
 }
