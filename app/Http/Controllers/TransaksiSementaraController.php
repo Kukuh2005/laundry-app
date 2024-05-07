@@ -51,7 +51,8 @@ class TransaksiSementaraController extends Controller
         // TransaksiDetail::truncate();
 
         $pelanggan = Pelanggan::find($pelanggan_id);
-        $paket = Paket::all();
+        $kiloan = Paket::where('jenis', 'kiloan')->get();
+        $satuan = Paket::where('jenis', 'satuan')->get();
         $keranjang = TransaksiSementara::where('pelanggan_id', $pelanggan_id)->get();
 
         $get_sub_total = TransaksiSementara::where('pelanggan_id', $pelanggan_id)->get();
@@ -67,7 +68,7 @@ class TransaksiSementaraController extends Controller
 
         $total = number_format($sub_total, 0, ',', '.');
 
-        return view('transaksi.transaksi', compact('pelanggan', 'paket', 'keranjang', 'total', 'sub_total'));
+        return view('transaksi.transaksi', compact('pelanggan', 'kiloan', 'satuan', 'keranjang', 'total', 'sub_total'));
     }
 
     /**
@@ -79,12 +80,12 @@ class TransaksiSementaraController extends Controller
         $total = $paket->harga * $request->jumlah;
 
         $now = Carbon::now();
-        $tanggal_sekarang = $now->year . "-" . $now->month . "-" . $now->day;
+        $tanggal_selesai = $now->addHours($paket->durasi);
 
         $transaksiSementara = new TransaksiSementara;
         $transaksiSementara->pelanggan_id = $request->pelanggan_id;
-        $transaksiSementara->tanggal = $tanggal_sekarang;
-        $transaksiSementara->tanggal_selesai = $request->tanggal_selesai;
+        $transaksiSementara->tanggal = $now;
+        $transaksiSementara->tanggal_selesai = $tanggal_selesai;
         $transaksiSementara->paket_id = $request->paket_id;
         $transaksiSementara->jumlah = $request->jumlah;
         $transaksiSementara->status = "proses";

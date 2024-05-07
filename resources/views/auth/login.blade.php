@@ -118,7 +118,7 @@
                       </g>
                     </svg>
                   </span>
-                  <span class="app-brand-text demo text-body fw-bolder">Laundry App</span>
+                  <a href="/" class="app-brand-text demo text-body fw-bolder">Laundry App</a>
                 </a>
               </div>
               <!-- /Logo -->

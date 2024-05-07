@@ -59,8 +59,8 @@ class TransaksiController extends Controller
             $transaksi->pelanggan_id = $pelanggan_id;
             $transaksi->tanggal = $tanggal_sekarang;
             $transaksi->total = $request->total;
-            $transaksi->bayar = $request->bayar;
-            $transaksi->kembali = $kembali;
+            $transaksi->bayar = 0;
+            $transaksi->kembali = 0;
             $transaksi->status_pembayaran = $request->status_pembayaran;
             $transaksi->user_id = Auth()->user()->id;
             $transaksi->save();
@@ -68,11 +68,16 @@ class TransaksiController extends Controller
             $transaksi_sementara = TransaksiSementara::where('pelanggan_id', $pelanggan_id)->get();
 
             foreach ($transaksi_sementara as $data) {
+                $paket = Paket::find($data->paket_id);
+
+                $now = Carbon::now();
+                $tanggal_selesai = $now->addHours($paket->durasi);
+
                 $transaksi_detail = new TransaksiDetail;
                 $transaksi_detail->kode = $nomor;
                 $transaksi_detail->pelanggan_id = $data->pelanggan_id;
                 $transaksi_detail->tanggal = $data->tanggal;
-                $transaksi_detail->tanggal_selesai = $data->tanggal_selesai;
+                $transaksi_detail->tanggal_selesai = $tanggal_selesai;
                 $transaksi_detail->paket_id = $data->paket_id;
                 $transaksi_detail->jumlah = $data->jumlah;    
                 $transaksi_detail->status = "Proses";    
@@ -102,11 +107,16 @@ class TransaksiController extends Controller
             $transaksi_sementara = TransaksiSementara::where('pelanggan_id', $pelanggan_id)->get();
 
             foreach ($transaksi_sementara as $data) {
+                $paket = Paket::find($data->paket_id);
+
+                $now = Carbon::now();
+                $tanggal_selesai = $now->addHours($paket->durasi);
+
                 $transaksi_detail = new TransaksiDetail;
                 $transaksi_detail->kode = $nomor;
                 $transaksi_detail->pelanggan_id = $data->pelanggan_id;
                 $transaksi_detail->tanggal = $data->tanggal;
-                $transaksi_detail->tanggal_selesai = $data->tanggal_selesai;
+                $transaksi_detail->tanggal_selesai = $tanggal_selesai;
                 $transaksi_detail->paket_id = $data->paket_id;
                 $transaksi_detail->jumlah = $data->jumlah;  
                 $transaksi_detail->status = "Proses";      

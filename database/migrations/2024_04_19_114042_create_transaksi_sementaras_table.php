@@ -14,8 +14,8 @@ return new class extends Migration
         Schema::create('transaksi_sementaras', function (Blueprint $table) {
             $table->id();
             $table->integer('pelanggan_id');
-            $table->date('tanggal');
-            $table->date('tanggal_selesai');
+            $table->datetime('tanggal');
+            $table->datetime('tanggal_selesai');
             $table->integer('paket_id');
             $table->float('jumlah');
             $table->string('status');

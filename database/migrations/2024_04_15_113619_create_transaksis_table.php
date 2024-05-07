@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('kode');
             $table->integer('pelanggan_id');
-            $table->date('tanggal');
+            $table->datetime('tanggal');
             $table->float('total');
             $table->float('bayar');
             $table->float('kembali');

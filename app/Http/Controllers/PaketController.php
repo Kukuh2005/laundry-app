@@ -40,6 +40,7 @@ class PaketController extends Controller
         $paket = new Paket;
         $paket->nama = $request->nama;
         $paket->jenis = $request->jenis;
+        $paket->durasi = $request->durasi;
         $paket->harga = $request->harga;
         $paket->save();
 
@@ -77,6 +78,7 @@ class PaketController extends Controller
 
         $paket->nama = $request->nama;
         $paket->jenis = $request->jenis;
+        $paket->durasi = $request->durasi;
         $paket->harga = $request->harga;
         $paket->update();
 

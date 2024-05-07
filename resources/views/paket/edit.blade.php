@@ -28,6 +28,13 @@
                 </div>
             </div>
             <div class="row mb-3">
+                <label class="col-sm-2 col-form-label" for="basic-default-email">Durasi(jam)</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" id="basic-default-name" name="durasi"
+                        oninput="validasiInput(this)" placeholder="Contoh: 24, 48, 72" value="{{$paket->durasi}}">
+                </div>
+            </div>
+            <div class="row mb-3">
                 <label class="col-sm-2 col-form-label" for="basic-default-email">Harga</label>
                 <div class="col-sm-10">
                     <input type="text" class="form-control" id="basic-default-name" name="harga"

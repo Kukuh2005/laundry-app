@@ -28,6 +28,7 @@
                         <td>No</td>
                         <td>Nama</td>
                         <td>Jenis</td>
+                        <td>Durasi</td>
                         <td>Harga</td>
                         <td>Aksi</td>
                     </tr>
@@ -38,6 +39,7 @@
                         <td>{{$loop->iteration}}</td>
                         <td>{{$item->nama}}</td>
                         <td>{{$item->jenis}}</td>
+                        <td>{{$item->durasi}} Jam</td>
                         <td>{{$item->formatRupiah('harga')}}</td>
                         <td>
                             <form action="/paket/{{$item->id}}/delete">
