@@ -34,10 +34,10 @@
                         </a>
                     </li>
                     <li>
-                        <a class="dropdown-item" href="#">
+                        <button type="button" class="dropdown-item" data-bs-toggle="modal" data-bs-target="#modal-outlet">
                             <i class="bx bx-cog me-2"></i>
-                            <span class="align-middle">Settings</span>
-                        </a>
+                            <span class="align-middle">Pengaturan Outlet</span>
+                        </button>
                     </li>
                     <li>
                         <div class="dropdown-divider"></div>
@@ -54,3 +54,4 @@
         </ul>
     </div>
 </nav>
+@include('outlet.form')

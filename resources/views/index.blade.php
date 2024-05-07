@@ -54,7 +54,7 @@
                     <div class="navbar-nav-right d-flex align-items-center" id="navbar-collapse">
                         <ul class="navbar-nav flex-row align-items-center">
                             <!-- User -->
-                            <a href="/" class="app-brand-text demo menu-text fw-bolder ms-2 text-primary">Laundry App</a>
+                            <a href="/" class="app-brand-text demo menu-text fw-bolder ms-2 text-primary">{{$outlet->nama}}</a>
                             <!--/ User -->
                         </ul>
                     </div>
@@ -68,7 +68,7 @@
                     <div class="container px-4 px-lg-5 h-100">
                         <div class="row gx-4 gx-lg-5 h-100 align-items-center justify-content-center text-center">
                             <div class="col-lg-8 align-self-end">
-                                <h1 class="text-white font-weight-bold text-primary">Welcome to Laundry App! 👋</h1>
+                                <h1 class="text-white font-weight-bold text-primary">Welcome to {{$outlet->nama}}! 👋</h1>
                                 <hr class="divider">
                             </div>
                             <div class="col-lg-8 align-self-baseline">

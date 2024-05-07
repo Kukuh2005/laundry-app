@@ -60,8 +60,7 @@
                         <ul class="navbar-nav flex-row align-items-center">
                             <!-- User -->
                             <li class="nav-item navbar-dropdown dropdown-user dropdown">
-                                <a href="/" class="app-brand-text demo menu-text fw-bolder ms-2 text-primary">Laundry
-                                    App</a>
+                                <a href="/" class="app-brand-text demo menu-text fw-bolder ms-2 text-primary">{{$outlet->nama}}</a>
                             </li>
                             <!--/ User -->
                         </ul>
@@ -77,9 +76,9 @@
                                 @foreach($transaksi as $item)
                                 <h1 class="text-white font-weight-bold text-primary">
                                     {{$item->pelanggan->nama_pelanggan}} | {{$item->status_pembayaran}}</h1>
+                                    <hr class="divider">
+                                    <p class="text-white-75 mb-3"><a href="/cek-order">Cek Order</a> / {{$item->kode}}</p>
                                 @endforeach
-                                <hr class="divider">
-                                <p class="text-white-75 mb-3"><a href="/">Home</a> / cek-order</p>
                             </div>
                             <div class="col-md-12">
                                 <div class="row">
@@ -138,7 +137,7 @@
     </div>
     <div class="buy-now">
       <a
-        href="https://wa.me/62+087743055636"
+        href="https://wa.me/62+{{$outlet->telepon}}"
         target="_blank"
         class="btn btn-success btn-buy-now"
         ><i class="fab fa-whatsapp"></i> WhatsApp</a

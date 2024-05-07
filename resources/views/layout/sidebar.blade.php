@@ -3,7 +3,7 @@
                     <a href="/dashboard" class="app-brand-link">
                         <span class="app-brand-logo demo">
                         </span>
-                        <span class="app-brand-text demo menu-text fw-bolder ms-2 text-primary">Laundry App</span>
+                        <span class="app-brand-text demo menu-text fw-bolder text-primary" style="width: 100%">{{$outlet->nama}}</span>
                     </a>
 
                     <a href="javascript:void(0);"

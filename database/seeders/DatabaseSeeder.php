@@ -18,5 +18,11 @@ class DatabaseSeeder extends Seeder
         //     'name' => 'Test User',
         //     'email' => 'test@example.com',
         // ]);
+
+        \App\Models\Outlet::create([
+            'nama' => 'Toko Laundry',
+            'telepon' => '081234567891',
+            'alamat' => 'sidoarjo, jawa timur',
+        ]);
     }
 }

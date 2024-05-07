@@ -9,6 +9,7 @@ use App\Http\Controllers\TransaksiSementaraController;
 use App\Http\Controllers\TransaksiDetailController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\OutletController;
 use Illuminate\Support\Facades\Auth;
 
 /*
@@ -65,4 +66,6 @@ Route::group(['middleware' => ['auth', 'ceklevel:Admin,Karyawan']], function(){
     Route::get('/order/siap-ambil', [OrderController::class, 'siap']);
     Route::get('/order/selesai', [OrderController::class, 'selesai']);
     Route::put('/order/{id}/update', [OrderController::class, 'update']);
+
+    Route::put('/outlet/update', [OutletController::class, 'update']);
 });

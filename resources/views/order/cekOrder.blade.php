@@ -55,7 +55,7 @@
                         <ul class="navbar-nav flex-row align-items-center">
                             <!-- User -->
                             <li class="nav-item navbar-dropdown dropdown-user dropdown">
-                                <a href="/" class="app-brand-text demo menu-text fw-bolder ms-2 text-primary">Laundry App</a>
+                                <a href="/" class="app-brand-text demo menu-text fw-bolder ms-2 text-primary">{{$outlet->nama}}</a>
                             </li>
                             <!--/ User -->
                         </ul>
