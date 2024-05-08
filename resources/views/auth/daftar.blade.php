@@ -132,7 +132,7 @@
                       </g>
                     </svg>
                   </span>
-                  <a href="/" class="app-brand-text demo text-body fw-bolder">Laundry App</a>
+                  <a href="/" class="app-brand-text demo text-body fw-bolder">{{$outlet->nama}}</a>
                 </a>
               </div>
               <!-- /Logo -->

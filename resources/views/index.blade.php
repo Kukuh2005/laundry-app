@@ -76,7 +76,6 @@
                                     reiciendis laudantium velit incidunt ratione! Placeat nihil adipisci assumenda perferendis id,
                                     quidem explicabo quis, animi illo, est nobis dolore quae.</p>
                                 <a class="btn btn-primary btn-xl" href="/cek-order">Cek Order</a>
-                                <a class="btn btn-info btn-xl" href="/login">Login</a>
                             </div>
                         </div>
                     </div>

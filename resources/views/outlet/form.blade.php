@@ -1,6 +1,6 @@
 <!-- Modal -->
 <div class="modal fade" id="modal-outlet" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-xl">
+    <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title text-success" id="exampleModalLabel">Data Outlet</h5>

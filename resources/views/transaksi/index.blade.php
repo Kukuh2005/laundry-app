@@ -30,7 +30,13 @@
                         <td>{{$item->kode}}</td>
                         <td>{{$item->pelanggan->nama_pelanggan}}</td>
                         <td>{{$item->formatRupiah('total')}}</td>
-                        <td>{{$item->status_pembayaran}}</td>
+                        <td>
+                            @if($item->status_pembayaran == 'Belum Bayar')
+                            <span class="badge bg-label-danger me-1">{{$item->status_pembayaran}}</span>
+                            @elseif($item->status_pembayaran == 'Sudah Bayar')
+                            <span class="badge bg-label-success me-1">{{$item->status_pembayaran}}</span>
+                            @endif
+                        </td>
                         <td>{{$item->user->name}}</td>
                         <td>
                             <!-- <a href="/transaksi/{{$item->kode}}/edit" class="btn btn-warning btn-sm d-block m-2">Edit</a> -->

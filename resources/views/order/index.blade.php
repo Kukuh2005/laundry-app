@@ -37,7 +37,7 @@
                         <td>{{$item->kode}}</td>
                         <td>{{$item->pelanggan->nama_pelanggan}}</td>
                         <td>{{$item->formatRupiah('total')}}</td>
-                        <td>{{$item->status_pembayaran}}</td>
+                        <td><span class="badge bg-label-danger me-1">{{$item->status_pembayaran}}</span></td>
                         <td>{{$item->user->name}}</td>
                         <td>
                             <button type="button" class="btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#modal-edit{{$item->kode}}">Edit</button>

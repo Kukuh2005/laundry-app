@@ -118,11 +118,11 @@
                       </g>
                     </svg>
                   </span>
-                  <a href="/" class="app-brand-text demo text-body fw-bolder">Laundry App</a>
+                  <a href="/" class="app-brand-text demo text-body fw-bolder">{{$outlet->nama}}</a>
                 </a>
               </div>
               <!-- /Logo -->
-              <h4 class="mb-2">Welcome to Laundry App! 👋</h4>
+              <h4 class="mb-2">Welcome to {{$outlet->nama}}! 👋</h4>
 
               <form id="formAuthentication" class="mb-3" action="/postlogin" method="POST">
                 @csrf

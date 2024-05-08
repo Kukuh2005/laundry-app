@@ -38,9 +38,18 @@
                         <td>{{$item->pelanggan->nama_pelanggan}}</td>
                         <td>{{$item->paket->nama}}</td>
                         <td>{{$item->tanggal_selesai}}</td>
-                        <td>{{$item->status}}</td>
                         <td>
-                            <button type="button" class="btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#modal-edit{{$item->kode}}">Edit</button>
+                            @if($item->status == 'Proses')
+                            <span class="badge bg-label-warning me-1">Proses</span>
+                            @elseif($item->status == 'Siap Ambil')
+                            <span class="badge bg-label-info me-1">Siap Ambil</span>
+                            @elseif($item->status == 'Selesai')
+                            <span class="badge bg-label-success me-1">Selesai</span>
+                            @endif
+                        </td>
+                        <td>
+                            <button type="button" class="btn btn-warning btn-sm" data-bs-toggle="modal"
+                                data-bs-target="#modal-edit{{$item->kode}}">Edit</button>
                         </td>
                     </tr>
                     @endforeach
@@ -97,5 +106,6 @@
                 }
             });
     }
+
 </script>
 @endpush
