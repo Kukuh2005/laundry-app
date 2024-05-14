@@ -67,11 +67,10 @@ class TransaksiController extends Controller
 
             $transaksi_sementara = TransaksiSementara::where('pelanggan_id', $pelanggan_id)->get();
 
+            $now = Carbon::now();
+            $tanggal_selesai = $now->addHours($paket->durasi);
             foreach ($transaksi_sementara as $data) {
                 $paket = Paket::find($data->paket_id);
-
-                $now = Carbon::now();
-                $tanggal_selesai = $now->addHours($paket->durasi);
 
                 $transaksi_detail = new TransaksiDetail;
                 $transaksi_detail->kode = $nomor;
@@ -108,9 +107,6 @@ class TransaksiController extends Controller
 
             foreach ($transaksi_sementara as $data) {
                 $paket = Paket::find($data->paket_id);
-
-                $now = Carbon::now();
-                $tanggal_selesai = $now->addHours($paket->durasi);
 
                 $transaksi_detail = new TransaksiDetail;
                 $transaksi_detail->kode = $nomor;
