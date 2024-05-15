@@ -96,7 +96,7 @@
             <span class="fw-semibold d-block mb-1">Order Proses</span>
             <h3 class="card-title mb-2">{{$proses->count()}}</h3>
             @if(auth()->user()->level == 'Karyawan')
-            <a href="/order/proses" class="text-warning fw-semibold">Detail</a>
+            <a href="/{{auth()->user()->level}}/order/proses" class="text-warning fw-semibold">Detail</a>
             @endif
             @if(auth()->user()->level == 'Admin')
             <a href="" class="text-warning fw-semibold" data-bs-toggle="modal" data-bs-target="#proses">Detail</a>
@@ -113,7 +113,7 @@
             <span class="fw-semibold d-block mb-1">Siap Ambil</span>
             <h3 class="card-title mb-2">{{$siap_ambil->count()}}</h3>
             @if(auth()->user()->level == 'Karyawan')
-            <a href="/order/siap-ambil" class="text-info fw-semibold">Detail</a>
+            <a href="/{{auth()->user()->level}}/order/siap-ambil" class="text-info fw-semibold">Detail</a>
             @endif
             @if(auth()->user()->level == 'Admin')
             <a href="" class="text-info fw-semibold" data-bs-toggle="modal" data-bs-target="#siap_ambil">Detail</a>
@@ -130,7 +130,7 @@
             <span class="fw-semibold d-block mb-1">Order Selesai</span>
             <h3 class="card-title mb-2">{{$selesai->count()}}</h3>
             @if(auth()->user()->level == 'Karyawan')
-            <a href="/order/selesai" class="text-success fw-semibold">Detail</a>
+            <a href="/{{auth()->user()->level}}/order/selesai" class="text-success fw-semibold">Detail</a>
             @endif
             @if(auth()->user()->level == 'Admin')
             <a href="" class="text-success fw-semibold" data-bs-toggle="modal" data-bs-target="#selesai">Detail</a>
@@ -147,7 +147,7 @@
             <span class="fw-semibold d-block mb-1">Belum Bayar</span>
             <h3 class="card-title mb-2">{{$belum_bayar->count()}}</h3>
             @if(auth()->user()->level == 'Karyawan')
-            <a href="/order" class="text-danger fw-semibold">Detail</a>
+            <a href="/{{auth()->user()->level}}/order" class="text-danger fw-semibold">Detail</a>
             @endif
             @if(auth()->user()->level == 'Admin')
             <a href="" class="text-danger fw-semibold" data-bs-toggle="modal" data-bs-target="#belum_bayar">Detail</a>
