@@ -7,7 +7,7 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form action="/pelanggan/store" method="POST">
+                <form action="/{{auth()->user()->level}}/pelanggan/store" method="POST">
                     @csrf
                     <div class="row mb-3">
                         <label class="col-sm-2 col-form-label" for="basic-default-name">Nama</label>

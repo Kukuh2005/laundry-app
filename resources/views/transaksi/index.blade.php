@@ -40,7 +40,7 @@
                         <td>{{$item->user->name}}</td>
                         <td>
                             <!-- <a href="/transaksi/{{$item->kode}}/edit" class="btn btn-warning btn-sm d-block m-2">Edit</a> -->
-                            <a href="/transaksi/{{$item->kode}}/detail" class="btn btn-primary btn-sm d-block" >Detail</a>
+                            <a href="/{{auth()->user()->level}}/transaksi/{{$item->kode}}/detail" class="btn btn-primary btn-sm d-block" >Detail</a>
                         </td>
                     </tr>
                     @endforeach

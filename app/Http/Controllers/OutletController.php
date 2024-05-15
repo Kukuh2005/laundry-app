@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Outlet;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class OutletController extends Controller
 {
@@ -59,7 +60,7 @@ class OutletController extends Controller
         $outlet->alamat = $request->alamat;
         $outlet->update();
 
-        return redirect('/dashboard')->with('sukses', 'Data outlet berhasil update');
+        return redirect(auth()->user()->level . '/dashboard')->with('sukses', 'Data outlet berhasil update');
     }
 
     /**

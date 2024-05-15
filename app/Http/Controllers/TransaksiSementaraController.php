@@ -9,6 +9,7 @@ use App\Models\Pelanggan;
 use App\Models\Paket;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Auth;
 
 class TransaksiSementaraController extends Controller
 {
@@ -92,7 +93,7 @@ class TransaksiSementaraController extends Controller
         $transaksiSementara->total = $total;
         $transaksiSementara->save();
 
-        return redirect('transaksi/' . $pelanggan_id)->with('sukses', 'Item ditambahkan ke keranjang');
+        return redirect(auth()->user()->level . '/transaksi' . '/' . $pelanggan_id)->with('sukses', 'Item ditambahkan ke keranjang');
     }
 
     /**
@@ -128,6 +129,6 @@ class TransaksiSementaraController extends Controller
 
         $transaksiSementara->delete();
 
-        return redirect('transaksi/' . $pelanggan_id)->with('sukses', 'Item di hapus dari keranjang');
+        return redirect(auth()->user()->level . '/transaksi' . '/' . $pelanggan_id)->with('sukses', 'Item di hapus dari keranjang');
     }
 }

@@ -8,8 +8,8 @@
 <div class="col-md-10 mb-2">
     <div class="card">
         <div class="btn-group" role="group" aria-label="Basic example">
-            <a href="/paket" class="btn btn-outline-primary">Kiloan</a>
-            <a href="/paket/satuan" class="btn btn-outline-primary">Satuan</a>
+            <a href="/{{auth()->user()->level}}/paket" class="btn btn-outline-primary">Kiloan</a>
+            <a href="/{{auth()->user()->level}}/paket/satuan" class="btn btn-outline-primary">Satuan</a>
         </div>
     </div>
 </div>
@@ -42,10 +42,10 @@
                         <td>{{$item->durasi}} Jam</td>
                         <td>{{$item->formatRupiah('harga')}}</td>
                         <td>
-                            <form action="/paket/{{$item->id}}/delete">
+                            <form action="/{{auth()->user()->level}}/paket/{{$item->id}}/delete">
                                 @method('DELETE')
                                 @csrf
-                                <a href="/paket/{{$item->id}}/edit" class="btn btn-warning btn-sm">Edit</a>
+                                <a href="/{{auth()->user()->level}}/paket/{{$item->id}}/edit" class="btn btn-warning btn-sm">Edit</a>
                                 <button type="button" class="btn btn-danger btn-sm" onclick="confirmDelete({{$item->id}})">Hapus</button>
                             </form>
                         </td>
@@ -98,7 +98,7 @@
                 if (willDelete) {
                     const form = document.getElementById('delete-form');
                     // Setelah pengguna mengkonfirmasi penghapusan, Anda bisa mengirim form ke server
-                    form.action = '/pelanggan/' + id + '/delete'; // Ubah aksi form sesuai dengan ID yang sesuai
+                    form.action = '/{{auth()->user()->level}}/pelanggan/' + id + '/delete'; // Ubah aksi form sesuai dengan ID yang sesuai
                     form.submit();
                 }
             });

@@ -141,6 +141,14 @@
       position: 'topRight'
       });
     </script>
+    @elseif(session('gagal'))
+    <script>
+      iziToast.error({
+      title: 'Gagal',
+      message: '{{session('gagal')}}',
+      position: 'topRight'
+      });
+    </script>
     @endif
 </body>
 </html>

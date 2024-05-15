@@ -1,14 +1,14 @@
 <!-- Modal -->
-<div class="modal fade" id="selesai_hari_ini" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="selesai" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-xl">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title text-info" id="exampleModalLabel">Order Selesai Hari Ini</h5>
+                <h5 class="modal-title text-success" id="exampleModalLabel">Order Selesai</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
                 <div class="table-responsive text-nowrap mt-2 mb-2">
-                    <table class="table table-striped" style="width: 100%" id="table_selesai_hari_ini">
+                    <table class="table table-striped" style="width: 100%" id="table_selesai">
                         <thead>
                             <tr>
                                 <td>No</td>
@@ -20,7 +20,7 @@
                             </tr>
                         </thead>
                         <tbody class="table-border-bottom-0">
-                            @foreach($selesai_hari_ini as $item)
+                            @foreach($selesai as $item)
                             <tr>
                                 <td>{{$loop->iteration}}</td>
                                 <td>{{$item->kode}}</td>

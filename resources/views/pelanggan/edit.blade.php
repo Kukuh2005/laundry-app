@@ -7,7 +7,7 @@
 @section('content')
 <div class="col-md-12">
     <div class="card">
-        <form class="m-4" action="/pelanggan/{{$pelanggan->id}}/update" method="POST">
+        <form class="m-4" action="/{{auth()->user()->level}}/pelanggan/{{$pelanggan->id}}/update" method="POST">
             @method('PUT')
             @csrf
             <div class="row mb-3">

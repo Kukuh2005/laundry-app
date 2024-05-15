@@ -13,7 +13,7 @@ class DashboardController extends Controller
     public function index(){
         $proses = TransaksiDetail::where('status', 'Proses')->get();
         $siap_ambil = TransaksiDetail::where('status', 'Siap Ambil')->get();
-        $selesai = TransaksiDetail::where('status', 'Selesai')->get();
+        $selesai = TransaksiDetail::where('status', 'Selesai')->orderBy('tanggal_selesai', 'desc')->get();
         $belum_bayar = Transaksi::where('status_pembayaran', 'Belum Bayar')->get();
 
         $now = Carbon::now()->format('Y-m-d');

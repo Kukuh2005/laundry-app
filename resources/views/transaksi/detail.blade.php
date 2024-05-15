@@ -8,7 +8,7 @@
 <div class="col-md-12">
     <div class="card">
     <div class="btn-tambah m-2">
-            <p class="card-header"><a href="/transaksi">Transaksi</a> / {{$kode}}</p>
+            <p class="card-header"><a href="/{{auth()->user()->level}}/transaksi">Transaksi</a> / {{$kode}}</p>
         </div>
         <div class="table-responsive text-nowrap mt-2 mb-2">
             <table class="table table-striped" id="table">

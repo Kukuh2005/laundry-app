@@ -29,10 +29,10 @@
                         <td>{{$item->telepon}}</td>
                         <td>{{$item->alamat}}</td>
                         <td>
-                            <form action="/pelanggan/{{$item->id}}/delete" id="delete-form">
+                            <form action="/{{auth()->user()->level}}/pelanggan/{{$item->id}}/delete" id="delete-form">
                                 @method('DELETE')
                                 @csrf
-                                <a href="/pelanggan/{{$item->id}}/edit" class="btn btn-warning btn-sm">Edit</a>
+                                <a href="/{{auth()->user()->level}}/pelanggan/{{$item->id}}/edit" class="btn btn-warning btn-sm">Edit</a>
                                 <button type="button" class="btn btn-danger btn-sm"
                                     onclick="confirmDelete({{$item->id}})">Hapus</button>
                             </form>
@@ -86,7 +86,7 @@
                 if (willDelete) {
                     const form = document.getElementById('delete-form');
                     // Setelah pengguna mengkonfirmasi penghapusan, Anda bisa mengirim form ke server
-                    form.action = '/pelanggan/' + id + '/delete'; // Ubah aksi form sesuai dengan ID yang sesuai
+                    form.action = '/{{auth()->user()->level}}/pelanggan/' + id + '/delete'; // Ubah aksi form sesuai dengan ID yang sesuai
                     form.submit();
                 }
             });

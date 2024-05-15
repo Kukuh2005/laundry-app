@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\TransaksiDetail;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\Auth;
 class TransaksiDetailController extends Controller
 {
     /**
@@ -56,7 +56,7 @@ class TransaksiDetailController extends Controller
         $transaksiDetail->status = $request->status;
         $transaksiDetail->update();
 
-        return redirect('transaksi/' . $kode . '/edit')->with('sukses', 'Status berhasil update');
+        return redirect(auth()->user()->level . '/transaksi' . '/' . $kode . '/edit')->with('sukses', 'Status berhasil update');
     }
 
     /**

@@ -7,7 +7,7 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form action="/outlet/update" method="POST">
+                <form action="{{auth()->user()->level}}/outlet/update" method="POST">
                     @method('PUT')
                     @csrf
                     <div class="row mb-3">

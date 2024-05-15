@@ -1,0 +1,37 @@
+<!-- Modal -->
+<div class="modal fade" id="belum_bayar" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-xl">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title text-danger" id="exampleModalLabel">Belum Bayar</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="table-responsive text-nowrap mt-2 mb-2">
+                    <table class="table table-striped" style="width: 100%" id="table_belum_bayar">
+                        <thead>
+                            <tr>
+                                <td>No</td>
+                                <td>Kode</td>
+                                <td>Pelanggan</td>
+                                <td>Total</td>
+                                <td>Status</td>
+                            </tr>
+                        </thead>
+                        <tbody class="table-border-bottom-0">
+                            @foreach($belum_bayar as $item)
+                            <tr>
+                                <td>{{$loop->iteration}}</td>
+                                <td>{{$item->kode}}</td>
+                                <td>{{$item->pelanggan->nama_pelanggan}}</td>
+                                <td>{{$item->total}}</td>
+                                <td><span class="badge bg-label-danger me-1">{{$item->status_pembayaran}}</span></td>
+                            </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

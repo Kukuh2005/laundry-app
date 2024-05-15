@@ -6,7 +6,7 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form action="/transaksi/{{$pelanggan->id}}/bayar" method="POST" id="form-bayar">
+                <form action="/{{auth()->user()->level}}/transaksi/{{$pelanggan->id}}/bayar" method="POST" id="form-bayar">
                     @csrf
                     <div class="row">
                         <div class="col mb-3">

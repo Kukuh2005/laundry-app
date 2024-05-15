@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Paket;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class PaketController extends Controller
 {
@@ -45,9 +46,9 @@ class PaketController extends Controller
         $paket->save();
 
         if($request->jenis == 'kiloan'){
-            return redirect('paket')->with('sukses', 'Berhasil tambah data');
+            return redirect(auth()->user()->level . '/paket')->with('sukses', 'Berhasil tambah data');
         }else{
-            return redirect('paket/satuan')->with('sukses', 'Berhasil tambah data');
+            return redirect(auth()->user()->level . '/paket/satuan')->with('sukses', 'Berhasil tambah data');
         }
     }
 
@@ -83,9 +84,9 @@ class PaketController extends Controller
         $paket->update();
 
         if($request->jenis == "kiloan"){
-            return redirect('paket')->with('sukses', 'Edit data berhasil');
+            return redirect(auth()->user()->level . '/paket')->with('sukses', 'Edit data berhasil');
         }elseif($request->jenis == "satuan"){
-            return redirect('paket/satuan')->with('sukses', 'Edit data berhasil');
+            return redirect(auth()->user()->level . '/paket/satuan')->with('sukses', 'Edit data berhasil');
         }
     }
 
@@ -99,9 +100,9 @@ class PaketController extends Controller
         $paket->delete();
 
         if($paket->jenis == 'kiloan'){
-            return redirect('paket')->with('sukses', 'Hapus data berhasil');
+            return redirect(auth()->user()->level . '/paket')->with('sukses', 'Hapus data berhasil');
         }else{
-            return redirect('paket/satuan')->with('sukses', 'Hapus data berhasil');
+            return redirect(auth()->user()->level . '/paket/satuan')->with('sukses', 'Hapus data berhasil');
         }
 
     }

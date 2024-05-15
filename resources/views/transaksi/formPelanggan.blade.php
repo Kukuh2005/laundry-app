@@ -22,7 +22,7 @@
                                 <td>{{$loop->iteration}}</td>
                                 <td>{{$item->nama_pelanggan}}</td>
                                 <td>
-                                    <a href="/transaksi/{{$item->id}}" class="btn btn-primary btn-sm">Pilih</a>
+                                    <a href="/{{auth()->user()->level}}/transaksi/{{$item->id}}" class="btn btn-primary btn-sm">Pilih</a>
                                 </td>
                             </tr>
                             @endforeach

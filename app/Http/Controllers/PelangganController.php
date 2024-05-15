@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\pelanggan;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class PelangganController extends Controller
 {
@@ -36,7 +37,7 @@ class PelangganController extends Controller
         $pelanggan->alamat = $request->alamat;
         $pelanggan->save();
 
-        return redirect('pelanggan')->with('sukses', 'Tambah data berhasil');
+        return redirect(auth()->user()->level . '/pelanggan')->with('sukses', 'Tambah data berhasil');
     }
 
     /**
@@ -68,7 +69,7 @@ class PelangganController extends Controller
         $pelanggan->alamat = $request->alamat;
         $pelanggan->update();
 
-        return redirect('pelanggan')->with('sukses', 'Edit data berhasil');
+        return redirect(auth()->user()->level . '/pelanggan')->with('sukses', 'Edit data berhasil');
     }
 
     /**
@@ -80,6 +81,6 @@ class PelangganController extends Controller
 
         $pelanggan->delete();
 
-        return redirect('pelanggan')->with('sukses', 'Hapus data berhasil');
+        return redirect(auth()->user()->level . '/pelanggan')->with('sukses', 'Hapus data berhasil');
     }
 }

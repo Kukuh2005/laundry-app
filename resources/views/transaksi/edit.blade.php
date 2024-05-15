@@ -33,7 +33,7 @@
                         <td>{{$item->paket_id}}</td>
                         <td>{{$item->jumlah}}</td>
                         <td>
-                            <form action="/transaksi/{{$item->id}}/{{$kode}}/update-status" id="form-edit-status-{{$item->id}}" method="POST">
+                            <form action="/{{auth()->user()->level}}/transaksi/{{$item->id}}/{{$kode}}/update-status" id="form-edit-status-{{$item->id}}" method="POST">
                                 @method('PUT')
                                 @csrf
                                 <select name="status" class="form-control">

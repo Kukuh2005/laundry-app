@@ -8,10 +8,10 @@
 <div class="col-md-12 mb-2">
     <div class="card">
         <div class="btn-group" role="group" aria-label="Basic example">
-            <a href="/order" class="btn btn-outline-primary">Belum Bayar ({{$belum_bayar->count()}})</a>
-            <a href="/order/proses" class="btn btn-outline-primary">Proses ({{$proses->count()}})</a>
-            <a href="/order/siap-ambil" class="btn btn-outline-primary">Siap Ambil ({{$siap_ambil->count()}})</a>
-            <a href="/order/selesai" class="btn btn-outline-primary">Selesai ({{$selesai->count()}})</a>
+            <a href="/{{auth()->user()->level}}/order" class="btn btn-outline-primary">Belum Bayar ({{$belum_bayar->count()}})</a>
+            <a href="/{{auth()->user()->level}}/order/proses" class="btn btn-outline-primary">Proses ({{$proses->count()}})</a>
+            <a href="/{{auth()->user()->level}}/order/siap-ambil" class="btn btn-outline-primary">Siap Ambil ({{$siap_ambil->count()}})</a>
+            <a href="/{{auth()->user()->level}}/order/selesai" class="btn btn-outline-primary">Selesai ({{$selesai->count()}})</a>
         </div>
     </div>
 </div>
@@ -100,7 +100,7 @@
                 if (willDelete) {
                     const form = document.getElementById('delete-form');
                     // Setelah pengguna mengkonfirmasi penghapusan, Anda bisa mengirim form ke server
-                    form.action = '/pelanggan/' + id + '/delete'; // Ubah aksi form sesuai dengan ID yang sesuai
+                    form.action = '/{{auth()->user()->level}}/pelanggan/' + id + '/delete'; // Ubah aksi form sesuai dengan ID yang sesuai
                     form.submit();
                 }
             });

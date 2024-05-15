@@ -1,6 +1,6 @@
 <aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme">
                 <div class="app-brand demo">
-                    <a href="/dashboard" class="app-brand-link">
+                    <a href="/{{auth()->user()->level}}/dashboard" class="app-brand-link">
                         <span class="app-brand-logo demo">
                         </span>
                         <span class="app-brand-text demo menu-text fw-bolder text-primary" style="width: 100%">{{$outlet->nama}}</span>
@@ -17,7 +17,7 @@
                 <ul class="menu-inner py-1">
                     <!-- Dashboard -->
                     <li class="menu-item">
-                        <a href="/dashboard" class="menu-link">
+                        <a href="/{{auth()->user()->level}}/dashboard" class="menu-link">
                             <i class="fas fa-tachometer-alt me-3"></i>
                             <div data-i18n="Analytics">Dashboard</div>
                         </a>
@@ -29,33 +29,45 @@
                             <i class="fas fa-table me-3"></i>
                             <div data-i18n="Layouts">Data Master</div>
                         </a>
-
+                        
                         <ul class="menu-sub">
+                            @if(auth()->user()->level == 'Admin')
                             <li class="menu-item">
-                                <a href="/paket" class="menu-link">
+                                <a href="/{{auth()->user()->level}}/paket" class="menu-link">
                                     <div data-i18n="Without navbar">Paket</div>
                                 </a>
                             </li>
+                            @endif
                             <li class="menu-item">
-                                <a href="/pelanggan" class="menu-link">
+                                <a href="/{{auth()->user()->level}}/pelanggan" class="menu-link">
                                     <div data-i18n="Container">Pelanggan</div>
                                 </a>
                             </li>
                         </ul>
                     </li>
 
+                    @if(auth()->user()->level == 'Admin')
                     <li class="menu-item">
-                        <a href="/transaksi" class="menu-link">
+                        <a href="/{{auth()->user()->level}}/laporan" class="menu-link">
+                            <i class="fas fa-file me-3"></i>
+                            <div data-i18n="Analytics">Laporan</div>
+                        </a>
+                    </li>
+                    @endif
+                    @if(auth()->user()->level == 'Karyawan')
+                    <li class="menu-item">
+                        <a href="/{{auth()->user()->level}}/transaksi" class="menu-link">
                             <i class="fas fa-shopping-cart me-3"></i>
                             <div data-i18n="Analytics">Transaksi</div>
                         </a>
                     </li>
 
                     <li class="menu-item">
-                        <a href="/order" class="menu-link">
+                        <a href="/{{auth()->user()->level}}/order" class="menu-link">
                             <i class="fas fa-truck me-3"></i>
                             <div data-i18n="Analytics">Order</div>
                         </a>
                     </li>
+                    @endif
                 </ul>
             </aside>

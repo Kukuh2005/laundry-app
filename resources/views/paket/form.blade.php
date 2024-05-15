@@ -7,7 +7,7 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form action="/paket/store" method="POST">
+                <form action="/{{auth()->user()->level}}/paket/store" method="POST">
                     @csrf
                     <div class="row mb-3">
                         <label class="col-sm-2 col-form-label" for="basic-default-name">Nama</label>

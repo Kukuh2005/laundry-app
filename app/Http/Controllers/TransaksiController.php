@@ -37,7 +37,6 @@ class TransaksiController extends Controller
         $pelanggan = TransaksiSementara::where('pelanggan_id', $pelanggan_id)->get();
 
         $now = Carbon::now();
-        $tanggal_sekarang = $now->year . "-" . $now->month . "-" . $now->day;
 
         $tahun_bulan = $now->year . $now->month;
         $cek = Transaksi::count();
@@ -57,7 +56,7 @@ class TransaksiController extends Controller
             $transaksi = new Transaksi;
             $transaksi->kode = $nomor;
             $transaksi->pelanggan_id = $pelanggan_id;
-            $transaksi->tanggal = $tanggal_sekarang;
+            $transaksi->tanggal = $now;
             $transaksi->total = $request->total;
             $transaksi->bayar = 0;
             $transaksi->kembali = 0;
@@ -90,14 +89,14 @@ class TransaksiController extends Controller
                 $data->delete();
             }
             
-            return redirect('transaksi')->with('sukses', 'Transaksi berhasil');
+            return redirect(auth()->user()->level . '/transaksi')->with('sukses', 'Transaksi berhasil');
         }else{
             $kembali = $request->bayar - $request->total;
 
             $transaksi = new Transaksi;
             $transaksi->kode = $nomor;
             $transaksi->pelanggan_id = $pelanggan_id;
-            $transaksi->tanggal = $tanggal_sekarang;
+            $transaksi->tanggal = $now;
             $transaksi->total = $request->total;
             $transaksi->bayar = $request->bayar;
             $transaksi->kembali = $kembali;
@@ -128,7 +127,7 @@ class TransaksiController extends Controller
                 $data->delete();
             }
         
-            return redirect('transaksi')->with('sukses', 'Transaksi berhasil');
+            return redirect(auth()->user()->level . '/transaksi')->with('sukses', 'Transaksi berhasil');
         }
     }
 

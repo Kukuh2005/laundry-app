@@ -7,7 +7,7 @@
 @section('content')
 <div class="col-md-12">
     <div class="card">
-        <form class="m-3" action="/transaksi/{{$pelanggan->id}}/store" method="POST">
+        <form class="m-3" action="/{{auth()->user()->level}}/transaksi/{{$pelanggan->id}}/store" method="POST">
             @csrf
             <div class="row mb-3">
                 <div class="col-sm-12">

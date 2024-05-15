@@ -33,12 +33,14 @@
                             <span class="align-middle">My Profile</span>
                         </a>
                     </li>
+                    @if(auth()->user()->level == 'Admin')
                     <li>
                         <button type="button" class="dropdown-item" data-bs-toggle="modal" data-bs-target="#modal-outlet">
                             <i class="bx bx-cog me-2"></i>
                             <span class="align-middle">Pengaturan Outlet</span>
                         </button>
                     </li>
+                    @endif
                     <li>
                         <div class="dropdown-divider"></div>
                     </li>

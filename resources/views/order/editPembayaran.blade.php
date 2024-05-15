@@ -9,7 +9,7 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form action="/order/{{$item->id}}/update" method="POST" id="form-bayar">
+                <form action="/{{auth()->user()->level}}/order/{{$item->id}}/update" method="POST" id="form-bayar">
                     @method('PUT')
                     @csrf
                     <div class="row mb-3">

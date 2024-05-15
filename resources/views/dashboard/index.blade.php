@@ -5,6 +5,30 @@
 @section('content-header', 'Dashboard')
 
 @section('content')
+@if(auth()->user()->level == 'Karyawan')
+<div class="col-md-12">
+    <div class="card mb-2">
+        <div class="d-flex align-items-end row">
+            <div class="col-sm-8">
+                <div class="card-body">
+                    <h5 class="card-title text-primary">Selamat Datang {{auth()->user()->name}}! 🎉</h5>
+                    <p class="mb-4">
+                        Kamu Login Sebagai <span class="font-weight-bold">{{auth()->user()->level}}</span>
+                    </p>
+                </div>
+            </div>
+            <div class="col-sm-4 text-center text-sm-left">
+                <div class="card-body pb-0 px-0 px-md-4">
+                    <img src="../assets/img/illustrations/man-with-laptop-light.png" height="140" alt="View Badge User"
+                        data-app-dark-img="illustrations/man-with-laptop-dark.png"
+                        data-app-light-img="illustrations/man-with-laptop-light.png">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@endif
+@if(auth()->user()->level == 'Admin')
 <div class="col-md-8">
     <div class="card mb-2">
         <div class="d-flex align-items-end row">
@@ -49,6 +73,7 @@
         </div>
     </div>
 </div>
+@endif
 <div class="col-md-3">
     <div class="card mb-2">
         <div class="card-body">
@@ -70,7 +95,12 @@
             </div>
             <span class="fw-semibold d-block mb-1">Order Proses</span>
             <h3 class="card-title mb-2">{{$proses->count()}}</h3>
-          <a href="/order/proses" class="text-warning fw-semibold">Detail</a>
+            @if(auth()->user()->level == 'Karyawan')
+            <a href="/order/proses" class="text-warning fw-semibold">Detail</a>
+            @endif
+            @if(auth()->user()->level == 'Admin')
+            <a href="" class="text-warning fw-semibold" data-bs-toggle="modal" data-bs-target="#proses">Detail</a>
+            @endif
         </div>
     </div>
 </div>
@@ -82,7 +112,12 @@
             </div>
             <span class="fw-semibold d-block mb-1">Siap Ambil</span>
             <h3 class="card-title mb-2">{{$siap_ambil->count()}}</h3>
+            @if(auth()->user()->level == 'Karyawan')
             <a href="/order/siap-ambil" class="text-info fw-semibold">Detail</a>
+            @endif
+            @if(auth()->user()->level == 'Admin')
+            <a href="" class="text-info fw-semibold" data-bs-toggle="modal" data-bs-target="#siap_ambil">Detail</a>
+            @endif
         </div>
     </div>
 </div>
@@ -94,7 +129,12 @@
             </div>
             <span class="fw-semibold d-block mb-1">Order Selesai</span>
             <h3 class="card-title mb-2">{{$selesai->count()}}</h3>
+            @if(auth()->user()->level == 'Karyawan')
             <a href="/order/selesai" class="text-success fw-semibold">Detail</a>
+            @endif
+            @if(auth()->user()->level == 'Admin')
+            <a href="" class="text-success fw-semibold" data-bs-toggle="modal" data-bs-target="#selesai">Detail</a>
+            @endif
         </div>
     </div>
 </div>
@@ -106,9 +146,41 @@
             </div>
             <span class="fw-semibold d-block mb-1">Belum Bayar</span>
             <h3 class="card-title mb-2">{{$belum_bayar->count()}}</h3>
+            @if(auth()->user()->level == 'Karyawan')
             <a href="/order" class="text-danger fw-semibold">Detail</a>
+            @endif
+            @if(auth()->user()->level == 'Admin')
+            <a href="" class="text-danger fw-semibold" data-bs-toggle="modal" data-bs-target="#belum_bayar">Detail</a>
+            @endif
         </div>
     </div>
 </div>
 @include('dashboard.hariIni')
+@include('dashboard.belumBayar')
+@include('dashboard.proses')
+@include('dashboard.selesai')
+@include('dashboard.siapAmbil')
 @endsection
+@push('script')
+<script>
+    $(document).ready(function () {
+        $('#table_selesai_hari_ini').DataTable();
+    });
+
+    $(document).ready(function () {
+        $('#table_proses').DataTable();
+    });
+
+    $(document).ready(function () {
+        $('#table_siap_ambil').DataTable();
+    });
+
+    $(document).ready(function () {
+        $('#table_selesai').DataTable();
+    });
+
+    $(document).ready(function () {
+        $('#table_belum_bayar').DataTable();
+    });
+</script>
+@endpush

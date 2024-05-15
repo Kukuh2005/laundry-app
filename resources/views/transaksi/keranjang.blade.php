@@ -26,7 +26,7 @@
                                 <td>{{$item->jumlah}}</td>
                                 <td>{{$item->formatRupiah('total')}}</td>
                                 <td>
-                                    <form action="/transaksi/{{$item->id}}/{{$pelanggan->id}}/delete" id="delete-form">
+                                    <form action="/{{auth()->user()->level}}/transaksi/{{$item->id}}/{{$pelanggan->id}}/delete" id="delete-form">
                                         @method('DELETE')
                                         @csrf
                                         <button type="submit" class="btn btn-danger btn-sm" >Hapus</button>
