@@ -112,13 +112,14 @@
     <!-- endbuild -->
 
     <!-- Vendors JS -->
-    <script src="{{('/assets/vendor/libs/apex-charts/apexcharts.js')}}"></script>
+    <script src="{{asset('/assets/vendor/libs/apex-charts/apexcharts.js')}}"></script>
 
     <!-- Main JS -->
     <script src="{{asset('/assets/js/main.js')}}"></script>
 
     <!-- Page JS -->
     <script src="{{asset('/assets/js/dashboards-analytics.js')}}"></script>
+    <script src="{{asset('/assets/js/ui-toasts.js')}}"></script>
 
     <!-- Data Table -->
     <script src="{{asset('assets/vendor/datatables/datatables.min.js')}}"></script>

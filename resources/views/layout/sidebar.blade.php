@@ -53,6 +53,12 @@
                             <div data-i18n="Analytics">Laporan</div>
                         </a>
                     </li>
+                    <li class="menu-item">
+                        <a href="/{{auth()->user()->level}}/user" class="menu-link">
+                            <i class="fas fa-users me-3"></i>
+                            <div data-i18n="Analytics">User</div>
+                        </a>
+                    </li>
                     @endif
                     @if(auth()->user()->level == 'Karyawan')
                     <li class="menu-item">

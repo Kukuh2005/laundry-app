@@ -10,6 +10,7 @@ use App\Http\Controllers\TransaksiDetailController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\OutletController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Auth;
 
 /*
@@ -60,8 +61,13 @@ Route::group(['middleware' => ['auth', 'ceklevel:Admin']], function(){
     Route::get('Admin/transaksi/{kode}/detail', [TransaksiController::class, 'show']);
     
     Route::put('Admin/transaksi/{id}/{kode}/update-status', [TransaksiDetailController::class, 'update']);
-
+    
     Route::put('Admin/outlet/update', [OutletController::class, 'update']);
+
+    Route::get('Admin/user', [UserController::class, 'index']);
+    Route::post('Admin/user/store', [UserController::class, 'store']);
+    Route::get('Admin/user/{id}/delete', [UserController::class, 'destroy']);
+    Route::put('Admin/user/{id}/update', [UserController::class, 'update']);
 });
 
 Route::group(['middleware' => ['auth', 'ceklevel:Karyawan']], function(){
