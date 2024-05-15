@@ -9,7 +9,7 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form action="/order/{{$item->id}}/update" method="POST">
+                <form action="/order/{{$item->id}}/update" method="POST" id="form-bayar">
                     @method('PUT')
                     @csrf
                     <div class="row mb-3">
@@ -37,15 +37,15 @@
                                 <label for="nameWithTitle" class="col-sm-2 col-form-label">Total</label>
                                 <h1 class="text-info float-end">{{$item->formatRupiah('total')}}</h1>
                                 <h1 class="text-info float-end me-1">Rp</h1>
-                                <input type="text" name="total" value="{{$item->total}}" hidden>
+                                <input type="text" id="total" name="total" value="{{$item->total}}" hidden>
                             </div>
                         </div>
                         <label for="emailWithTitle" class="col-sm-2 col-form-label">Bayar</label>
                         <div class="col-sm-10 mb-0">
-                            <input type="text" id="emailWithTitle" class="form-control" name="bayar" oninput="hitungKembali(this)">
+                            <input type="text" id="bayar" class="form-control" name="bayar">
                         </div>
                     </div>
-                    <button type="submit" class="btn btn-primary float-end">Simpan</button>
+                    <button type="button" class="btn btn-primary float-end" id="btn-simpan" onclick="cekBayar()">Simpan</button>
                 </form>
             </div>
         </div>

@@ -56,6 +56,9 @@ class OrderController extends Controller
         if($request->status_pembayaran != null){
             $transaksi = Transaksi::find($id);
             $transaksi->status_pembayaran = $request->status_pembayaran;
+            $transaksi->bayar = $request->bayar;
+            $kembali = $request->bayar - $transaksi->total;
+            $transaksi->kembali = $kembali;
             $transaksi->update();
             
             return redirect('order')->with('sukses', 'Update data berhasil');

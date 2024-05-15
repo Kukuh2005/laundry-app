@@ -137,7 +137,7 @@
     </div>
     <div class="buy-now">
       <a
-        href="https://wa.me/62+{{$outlet->telepon}}"
+        href="https://wa.me/62{{$outlet->telepon}}"
         target="_blank"
         class="btn btn-success btn-buy-now"
         ><i class="fab fa-whatsapp"></i> WhatsApp</a

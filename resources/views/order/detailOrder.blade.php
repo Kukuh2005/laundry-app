@@ -58,7 +58,6 @@
         </div>
     </div>
 </div>
-@include('order.form')
 @include('order.editStatus')
 @endsection
 @push('script')
