@@ -172,6 +172,9 @@
                   <label for="level" class="form-label">Level</label>
                   <select name="level" class="form-control" id="">
                     <option value="">Choose your role/level</option>
+                    @if($user->where('level', 'Pemilik')->count() == 0)
+                    <option value="Pemilik">Pemilik</option>
+                    @endif
                     @if($user->where('level', 'Admin')->count() == 0)
                     <option value="Admin">Admin</option>
                     @endif

@@ -35,6 +35,50 @@ Route::get('/logout', [AuthController::class, 'logout']);
 Route::get('/cek-order', [OrderController::class, 'cek']);
 Route::get('/cek-order/cari', [OrderController::class, 'cari']);
 
+Route::group(['middleware' => ['auth', 'ceklevel:Pemilik']], function(){
+    Route::get('Pemilik/dashboard', [DashboardController::class, 'index']);
+
+    Route::get('Pemilik/paket', [PaketController::class, 'index']);
+    Route::get('Pemilik/paket/satuan', [PaketController::class, 'satuan']);
+    Route::post('Pemilik/paket/store', [PaketController::class, 'store']);
+    Route::get('Pemilik/paket/{id}/delete', [PaketController::class, 'destroy']);
+    Route::get('Pemilik/paket/{id}/edit', [PaketController::class, 'edit']);
+    Route::put('Pemilik/paket/{id}/update', [PaketController::class, 'update']);
+    
+    Route::get('Pemilik/pelanggan', [PelangganController::class, 'index']);
+    Route::post('Pemilik/pelanggan/store', [PelangganController::class, 'store']);
+    Route::get('Pemilik/pelanggan/{id}/delete', [PelangganController::class, 'destroy']);
+    Route::get('Pemilik/pelanggan/{id}/edit', [PelangganController::class, 'edit']);
+    Route::put('Pemilik/pelanggan/{id}/update', [PelangganController::class, 'update']);
+    
+    Route::get('Pemilik/transaksi', [TransaksiSementaraController::class, 'index']);
+    Route::get('Pemilik/transaksi/{pelanggan_id}', [TransaksiSementaraController::class, 'create']);
+    Route::post('Pemilik/transaksi/{pelanggan_id}/store', [TransaksiSementaraController::class, 'store']);
+    Route::get('Pemilik/transaksi/{id}/{pelanggan_id}/delete', [TransaksiSementaraController::class, 'destroy']);
+    
+    Route::post('Pemilik/transaksi/{pelanggan_id}/bayar', [TransaksiController::class, 'bayar']);
+    Route::get('Pemilik/transaksi/{kode}/edit', [TransaksiController::class, 'edit']);
+    Route::get('Pemilik/transaksi/{kode}/detail', [TransaksiController::class, 'show']);
+    
+    Route::put('Pemilik/transaksi/{id}/{kode}/update-status', [TransaksiDetailController::class, 'update']);
+    
+    Route::get('Pemilik/order', [OrderController::class, 'index']);
+    Route::get('Pemilik/order/proses', [OrderController::class, 'proses']);
+    Route::get('Pemilik/order/siap-ambil', [OrderController::class, 'siap']);
+    Route::get('Pemilik/order/selesai', [OrderController::class, 'selesai']);
+    Route::put('Pemilik/order/{id}/update', [OrderController::class, 'update']);
+    
+    Route::put('Pemilik/outlet/update', [OutletController::class, 'update']);
+
+    Route::get('Pemilik/user', [UserController::class, 'index']);
+    Route::post('Pemilik/user/store', [UserController::class, 'store']);
+    Route::get('Pemilik/user/{id}/delete', [UserController::class, 'destroy']);
+    Route::put('Pemilik/user/{id}/update', [UserController::class, 'update']);
+    
+    Route::get('Pemilik/profile', [UserController::class, 'profile']);
+    Route::put('Pemilik/profile/{id}/update', [UserController::class, 'profile_update']);
+});
+
 Route::group(['middleware' => ['auth', 'ceklevel:Admin']], function(){
     Route::get('Admin/dashboard', [DashboardController::class, 'index']);
 
@@ -50,19 +94,6 @@ Route::group(['middleware' => ['auth', 'ceklevel:Admin']], function(){
     Route::get('Admin/pelanggan/{id}/delete', [PelangganController::class, 'destroy']);
     Route::get('Admin/pelanggan/{id}/edit', [PelangganController::class, 'edit']);
     Route::put('Admin/pelanggan/{id}/update', [PelangganController::class, 'update']);
-    
-    Route::get('Admin/transaksi', [TransaksiSementaraController::class, 'index']);
-    Route::get('Admin/transaksi/{pelanggan_id}', [TransaksiSementaraController::class, 'create']);
-    Route::post('Admin/transaksi/{pelanggan_id}/store', [TransaksiSementaraController::class, 'store']);
-    Route::get('Admin/transaksi/{id}/{pelanggan_id}/delete', [TransaksiSementaraController::class, 'destroy']);
-    
-    Route::post('Admin/transaksi/{pelanggan_id}/bayar', [TransaksiController::class, 'bayar']);
-    Route::get('Admin/transaksi/{kode}/edit', [TransaksiController::class, 'edit']);
-    Route::get('Admin/transaksi/{kode}/detail', [TransaksiController::class, 'show']);
-    
-    Route::put('Admin/transaksi/{id}/{kode}/update-status', [TransaksiDetailController::class, 'update']);
-    
-    Route::put('Admin/outlet/update', [OutletController::class, 'update']);
 
     Route::get('Admin/user', [UserController::class, 'index']);
     Route::post('Admin/user/store', [UserController::class, 'store']);

@@ -31,7 +31,7 @@
                         </a>
                         
                         <ul class="menu-sub">
-                            @if(auth()->user()->level == 'Admin')
+                            @if(auth()->user()->level == 'Admin' || auth()->user()->level == 'Pemilik')
                             <li class="menu-item">
                                 <a href="/{{auth()->user()->level}}/paket" class="menu-link">
                                     <div data-i18n="Without navbar">Paket</div>
@@ -46,7 +46,22 @@
                         </ul>
                     </li>
 
-                    @if(auth()->user()->level == 'Admin')
+                    @if(auth()->user()->level == 'Karyawan' || auth()->user()->level == 'Pemilik')
+                    <li class="menu-item">
+                        <a href="/{{auth()->user()->level}}/transaksi" class="menu-link">
+                            <i class="fas fa-shopping-cart me-3"></i>
+                            <div data-i18n="Analytics">Transaksi</div>
+                        </a>
+                    </li>
+                    
+                    <li class="menu-item">
+                        <a href="/{{auth()->user()->level}}/order" class="menu-link">
+                            <i class="fas fa-truck me-3"></i>
+                            <div data-i18n="Analytics">Order</div>
+                        </a>
+                    </li>
+                    @endif
+                    @if(auth()->user()->level == 'Admin' || auth()->user()->level == 'Pemilik')
                     <li class="menu-item">
                         <a href="/{{auth()->user()->level}}/laporan" class="menu-link">
                             <i class="fas fa-file me-3"></i>
@@ -57,21 +72,6 @@
                         <a href="/{{auth()->user()->level}}/user" class="menu-link">
                             <i class="fas fa-users me-3"></i>
                             <div data-i18n="Analytics">User</div>
-                        </a>
-                    </li>
-                    @endif
-                    @if(auth()->user()->level == 'Karyawan')
-                    <li class="menu-item">
-                        <a href="/{{auth()->user()->level}}/transaksi" class="menu-link">
-                            <i class="fas fa-shopping-cart me-3"></i>
-                            <div data-i18n="Analytics">Transaksi</div>
-                        </a>
-                    </li>
-
-                    <li class="menu-item">
-                        <a href="/{{auth()->user()->level}}/order" class="menu-link">
-                            <i class="fas fa-truck me-3"></i>
-                            <div data-i18n="Analytics">Order</div>
                         </a>
                     </li>
                     @endif

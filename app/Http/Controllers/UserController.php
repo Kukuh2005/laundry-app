@@ -105,8 +105,15 @@ class UserController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy($id)
     {
-        //
+        $user = User::find($id);
+
+        if($user->level == 'Pemilik'){
+            return redirect(auth()->user()->level . '/user')->with('gagal', 'Anda gagal mengkudeta pemilik');
+        }else{
+            $user->delete();
+            return redirect(auth()->user()->level . '/user')->with('sukses', 'Hapus user berhasil');
+        }
     }
 }

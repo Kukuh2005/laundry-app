@@ -31,8 +31,11 @@
                         <td><span class="badge bg-label-info me-1">{{$item->level}}</span></td>
                         @elseif($item->level == 'Karyawan')
                         <td><span class="badge bg-label-success me-1">{{$item->level}}</span></td>
+                        @else
+                        <td><span class="badge bg-label-primary me-1">{{$item->level}}</span></td>
                         @endif
                         <td>
+                            @if($item->level != 'Pemilik')
                             <form action="/{{auth()->user()->level}}/user/{{$item->id}}/delete" id="delete-form">
                                 @method('DELETE')
                                 @csrf
@@ -40,6 +43,7 @@
                                 <button type="button" class="btn btn-danger btn-sm"
                                     onclick="confirmDelete({{$item->id}})">Hapus</button>
                             </form>
+                            @endif
                         </td>
                     </tr>
                     @endforeach

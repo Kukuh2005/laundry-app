@@ -33,7 +33,7 @@
                             <span class="align-middle">My Profile</span>
                         </a>
                     </li>
-                    @if(auth()->user()->level == 'Admin')
+                    @if(auth()->user()->level == 'Pemilik')
                     <li>
                         <button type="button" class="dropdown-item" data-bs-toggle="modal" data-bs-target="#modal-outlet">
                             <i class="bx bx-cog me-2"></i>

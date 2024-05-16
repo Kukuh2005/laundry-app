@@ -28,7 +28,7 @@
     </div>
 </div>
 @endif
-@if(auth()->user()->level == 'Admin')
+@if(auth()->user()->level == 'Admin' || auth()->user()->level == 'Pemilik')
 <div class="col-md-8">
     <div class="card mb-2">
         <div class="d-flex align-items-end row">
@@ -95,7 +95,7 @@
             </div>
             <span class="fw-semibold d-block mb-1">Order Proses</span>
             <h3 class="card-title mb-2">{{$proses->count()}}</h3>
-            @if(auth()->user()->level == 'Karyawan')
+            @if(auth()->user()->level == 'Karyawan' || auth()->user()->level == 'Pemilik')
             <a href="/{{auth()->user()->level}}/order/proses" class="text-warning fw-semibold">Detail</a>
             @endif
             @if(auth()->user()->level == 'Admin')
@@ -112,7 +112,7 @@
             </div>
             <span class="fw-semibold d-block mb-1">Siap Ambil</span>
             <h3 class="card-title mb-2">{{$siap_ambil->count()}}</h3>
-            @if(auth()->user()->level == 'Karyawan')
+            @if(auth()->user()->level == 'Karyawan' || auth()->user()->level == 'Pemilik')
             <a href="/{{auth()->user()->level}}/order/siap-ambil" class="text-info fw-semibold">Detail</a>
             @endif
             @if(auth()->user()->level == 'Admin')
@@ -129,7 +129,7 @@
             </div>
             <span class="fw-semibold d-block mb-1">Order Selesai</span>
             <h3 class="card-title mb-2">{{$selesai->count()}}</h3>
-            @if(auth()->user()->level == 'Karyawan')
+            @if(auth()->user()->level == 'Karyawan' || auth()->user()->level == 'Pemilik')
             <a href="/{{auth()->user()->level}}/order/selesai" class="text-success fw-semibold">Detail</a>
             @endif
             @if(auth()->user()->level == 'Admin')
@@ -146,7 +146,7 @@
             </div>
             <span class="fw-semibold d-block mb-1">Belum Bayar</span>
             <h3 class="card-title mb-2">{{$belum_bayar->count()}}</h3>
-            @if(auth()->user()->level == 'Karyawan')
+            @if(auth()->user()->level == 'Karyawan' || auth()->user()->level == 'Pemilik')
             <a href="/{{auth()->user()->level}}/order" class="text-danger fw-semibold">Detail</a>
             @endif
             @if(auth()->user()->level == 'Admin')
