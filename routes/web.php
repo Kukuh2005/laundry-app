@@ -59,7 +59,6 @@ Route::group(['middleware' => ['auth', 'ceklevel:Pemilik']], function(){
     
     Route::post('Pemilik/transaksi/{pelanggan_id}/bayar', [TransaksiController::class, 'bayar']);
     Route::get('Pemilik/transaksi/{kode}/edit', [TransaksiController::class, 'edit']);
-    Route::get('Pemilik/transaksi/{kode}/detail', [TransaksiController::class, 'show']);
     
     Route::put('Pemilik/transaksi/{id}/{kode}/update-status', [TransaksiDetailController::class, 'update']);
     
@@ -124,7 +123,6 @@ Route::group(['middleware' => ['auth', 'ceklevel:Karyawan']], function(){
     
     Route::post('Karyawan/transaksi/{pelanggan_id}/bayar', [TransaksiController::class, 'bayar']);
     Route::get('Karyawan/transaksi/{kode}/edit', [TransaksiController::class, 'edit']);
-    Route::get('Karyawan/transaksi/{kode}/detail', [TransaksiController::class, 'show']);
     
     Route::put('Karyawan/transaksi/{id}/{kode}/update-status', [TransaksiDetailController::class, 'update']);
     

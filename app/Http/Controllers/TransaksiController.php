@@ -136,13 +136,9 @@ class TransaksiController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Transaksi $transaksi, $kode)
+    public function show(Transaksi $transaksi)
     {
-        $transaksi_detail = TransaksiDetail::where('kode', $kode)->get();
-        $transaksi = Transaksi::where('kode', $kode)->get();
-        $kode = $kode;
-    
-        return view('transaksi.detail', compact('transaksi_detail', 'kode'));
+
     }
 
     /**

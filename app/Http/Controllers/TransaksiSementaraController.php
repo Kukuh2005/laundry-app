@@ -18,10 +18,11 @@ class TransaksiSementaraController extends Controller
      */
     public function index()
     {
-        $transaksi = Transaksi::orderBy('created_at', 'desc')->get();
+        $transaksi = Transaksi::orderBy('tanggal', 'desc')->get();
+        $transaksi_detail = TransaksiDetail::all();
         $pelanggan = Pelanggan::all();
 
-        return view('transaksi.index', compact('transaksi', 'pelanggan'));
+        return view('transaksi.index', compact('transaksi', 'transaksi_detail', 'pelanggan'));
         // $pelanggan = Pelanggan::all();
         // $paket = Paket::all();
         // $keranjang = TransaksiSementara::all();
