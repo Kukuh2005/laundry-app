@@ -68,6 +68,9 @@ Route::group(['middleware' => ['auth', 'ceklevel:Admin']], function(){
     Route::post('Admin/user/store', [UserController::class, 'store']);
     Route::get('Admin/user/{id}/delete', [UserController::class, 'destroy']);
     Route::put('Admin/user/{id}/update', [UserController::class, 'update']);
+    
+    Route::get('Admin/profile', [UserController::class, 'profile']);
+    Route::put('Admin/profile/{id}/update', [UserController::class, 'profile_update']);
 });
 
 Route::group(['middleware' => ['auth', 'ceklevel:Karyawan']], function(){
@@ -95,4 +98,7 @@ Route::group(['middleware' => ['auth', 'ceklevel:Karyawan']], function(){
     Route::get('Karyawan/order/siap-ambil', [OrderController::class, 'siap']);
     Route::get('Karyawan/order/selesai', [OrderController::class, 'selesai']);
     Route::put('Karyawan/order/{id}/update', [OrderController::class, 'update']);
+
+    Route::get('Karyawan/profile', [UserController::class, 'profile']);
+    Route::put('Karyawan/profile/{id}/update', [UserController::class, 'profile_update']);
 });

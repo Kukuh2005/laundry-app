@@ -76,14 +76,30 @@ class UserController extends Controller
     {
         $user = User::find($id);
 
-        if($request->password_baru == null){
-            $user->name = $request->name;
-            $user->email = $request->email;
-            $user->level = $request->level;
-            $user->update();
-        }
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->level = $request->level;
+        $user->update();
 
         return redirect(auth()->user()->level . '/user')->with('sukses', 'Edit user berhasil');
+    }
+
+    public function profile(){
+        $user = User::find(auth()->user()->id);
+
+        return view('profile.index', compact('user'));
+    }
+
+    public function profile_update(Request $request, $id)
+    {
+        $user = User::find($id);
+
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->password = bcrypt($request->password_baru);;
+        $user->update();    
+
+        return redirect(auth()->user()->level . '/profile')->with('sukses', 'Edit profile berhasil');
     }
 
     /**
