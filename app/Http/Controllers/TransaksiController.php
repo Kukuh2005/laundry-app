@@ -76,7 +76,7 @@ class TransaksiController extends Controller
                 $transaksi_detail = new TransaksiDetail;
                 $transaksi_detail->kode = $nomor;
                 $transaksi_detail->pelanggan_id = $data->pelanggan_id;
-                $transaksi_detail->tanggal = $data->tanggal;
+                $transaksi_detail->tanggal = $now;
                 $transaksi_detail->tanggal_selesai = $tanggal_selesai;
                 $transaksi_detail->paket_id = $data->paket_id;
                 $transaksi_detail->jumlah = $data->jumlah;    
@@ -115,7 +115,7 @@ class TransaksiController extends Controller
                 $transaksi_detail = new TransaksiDetail;
                 $transaksi_detail->kode = $nomor;
                 $transaksi_detail->pelanggan_id = $data->pelanggan_id;
-                $transaksi_detail->tanggal = $data->tanggal;
+                $transaksi_detail->tanggal = $now;
                 $transaksi_detail->tanggal_selesai = $tanggal_selesai;
                 $transaksi_detail->paket_id = $data->paket_id;
                 $transaksi_detail->jumlah = $data->jumlah;  

@@ -11,6 +11,7 @@ use App\Http\Controllers\OrderController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\OutletController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\LaporanController;
 use Illuminate\Support\Facades\Auth;
 
 /*
@@ -77,6 +78,9 @@ Route::group(['middleware' => ['auth', 'ceklevel:Pemilik']], function(){
     
     Route::get('Pemilik/profile', [UserController::class, 'profile']);
     Route::put('Pemilik/profile/{id}/update', [UserController::class, 'profile_update']);
+
+    Route::get('Pemilik/laporan', [LaporanController::class, 'index']);
+    Route::get('Pemilik/laporan/cari', [LaporanController::class, 'cari']);
 });
 
 Route::group(['middleware' => ['auth', 'ceklevel:Admin']], function(){

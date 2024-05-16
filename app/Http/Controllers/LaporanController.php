@@ -1,0 +1,84 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use Illuminate\Http\Request;
+use App\Models\Transaksi;
+use App\Models\TransaksiDetail;
+use Carbon\Carbon;
+
+class LaporanController extends Controller
+{
+    /**
+     * Display a listing of the resource.
+     */
+    public function index()
+    {
+        $transaksi = Transaksi::orderBy('tanggal', 'desc')->get();
+        $transaksi_detail = TransaksiDetail::all();
+        $now = Carbon::now();
+        $tanggal_dari = $now->format('Y-m-d');
+        $tanggal_sampai = $now->format('Y-m-d');
+
+        return view('laporan.index', compact('transaksi', 'transaksi_detail', 'tanggal_dari', 'tanggal_sampai'));
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     */
+    public function create()
+    {
+        //
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     */
+    public function cari(Request $request)
+    {
+        $transaksi_detail = TransaksiDetail::all();
+        $tanggal_dari = $request->tanggal_dari;
+        $tanggal_sampai = $request->tanggal_sampai;
+
+        // Pastikan format tanggal yang diterima sesuai dengan Y-m-d
+        $tanggal_dari = \Carbon\Carbon::parse($tanggal_dari)->format('Y-m-d');
+        $tanggal_sampai = \Carbon\Carbon::parse($tanggal_sampai)->format('Y-m-d');
+
+        $transaksi = Transaksi::whereBetween(\DB::raw('DATE(tanggal)'), [$tanggal_dari, $tanggal_sampai])->get();
+
+        return view('laporan.index', compact('transaksi', 'transaksi_detail', 'tanggal_dari', 'tanggal_sampai'));
+
+    }
+
+    /**
+     * Display the specified resource.
+     */
+    public function show(string $id)
+    {
+        //
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     */
+    public function edit(string $id)
+    {
+        //
+    }
+
+    /**
+     * Update the specified resource in storage.
+     */
+    public function update(Request $request, string $id)
+    {
+        //
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     */
+    public function destroy(string $id)
+    {
+        //
+    }
+}
