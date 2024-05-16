@@ -21,6 +21,7 @@ return new class extends Migration
             $table->float('jumlah');
             $table->string('status');
             $table->float('total');
+            $table->string('keterangan')->nullable();
             $table->timestamps();
         });
     }

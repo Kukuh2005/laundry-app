@@ -12,7 +12,7 @@
                     <div class="row mb-3">
                         <label class="col-sm-2 col-form-label" for="basic-default-name">Nama</label>
                         <div class="col-sm-10">
-                            <input type="text" class="form-control" id="basic-default-name" name="nama_pelanggan">
+                            <input type="text" class="form-control" id="basic-default-name" name="nama_pelanggan" placeholder="Nama Pelanggan" autofocus>
                         </div>
                     </div>
                     <div class="row mb-3">

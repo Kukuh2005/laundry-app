@@ -11,9 +11,7 @@ class AuthController extends Controller
 {
     public function index()
     {
-        $user = User::all();
-
-        return view('auth.login', compact('user'));
+        return view('auth.login');
     }
     
     public function daftar()

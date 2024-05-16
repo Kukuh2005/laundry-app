@@ -23,7 +23,7 @@ class OrderController extends Controller
     }
 
     public function proses(){
-        $transaksi = TransaksiDetail::where('status', 'Proses')->get();
+        $transaksi = TransaksiDetail::where('status', 'Proses')->orderBy('tanggal_selesai', 'asc')->get();
         $belum_bayar = Transaksi::where('status_pembayaran', 'Belum Bayar')->get();
         $proses = TransaksiDetail::where('status', 'Proses')->get();
         $siap_ambil = TransaksiDetail::where('status', 'Siap Ambil')->get();
@@ -33,7 +33,7 @@ class OrderController extends Controller
     }
 
     public function siap(){
-        $transaksi = TransaksiDetail::where('status', 'Siap Ambil')->get();
+        $transaksi = TransaksiDetail::where('status', 'Siap Ambil')->orderBy('tanggal_selesai', 'desc')->get();
         $belum_bayar = Transaksi::where('status_pembayaran', 'Belum Bayar')->get();
         $proses = TransaksiDetail::where('status', 'Proses')->get();
         $siap_ambil = TransaksiDetail::where('status', 'Siap Ambil')->get();

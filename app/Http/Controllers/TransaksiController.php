@@ -82,6 +82,7 @@ class TransaksiController extends Controller
                 $transaksi_detail->jumlah = $data->jumlah;    
                 $transaksi_detail->status = "Proses";    
                 $transaksi_detail->total = $data->total;
+                $transaksi_detail->keterangan = $data->keterangan;
                 $transaksi_detail->save();
             }
 
@@ -120,6 +121,7 @@ class TransaksiController extends Controller
                 $transaksi_detail->jumlah = $data->jumlah;  
                 $transaksi_detail->status = "Proses";      
                 $transaksi_detail->total = $data->total;
+                $transaksi_detail->keterangan = $data->keterangan;
                 $transaksi_detail->save();
             }
 

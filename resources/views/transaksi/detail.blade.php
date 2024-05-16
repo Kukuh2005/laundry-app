@@ -21,6 +21,7 @@
                         <td>jumlah</td>
                         <td>Total</td>
                         <td>Status</td>
+                        <td>Keterangan</td>
                     </tr>
                 </thead>
                 <tbody class="table-border-bottom-0">
@@ -32,7 +33,14 @@
                         <td>{{$item->paket->nama}}</td>
                         <td>{{$item->jumlah}}</td>
                         <td>{{$item->total}}</td>
-                        <td>{{$item->status}}</td>
+                        <td>@if($item->status == 'Proses')
+                            <span class="badge bg-label-warning me-1">Proses</span>
+                            @elseif($item->status == 'Siap Ambil')
+                            <span class="badge bg-label-info me-1">Siap Ambil</span>
+                            @elseif($item->status == 'Selesai')
+                            <span class="badge bg-label-success me-1">Selesai</span>
+                            @endif</td>
+                        <td>{{$item->keterangan}}</td>
                     </tr>
                     @endforeach
                 </tbody>

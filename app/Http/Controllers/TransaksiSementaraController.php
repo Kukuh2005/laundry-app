@@ -91,6 +91,7 @@ class TransaksiSementaraController extends Controller
         $transaksiSementara->jumlah = $request->jumlah;
         $transaksiSementara->status = "proses";
         $transaksiSementara->total = $total;
+        $transaksiSementara->keterangan = $request->keterangan;
         $transaksiSementara->save();
 
         return redirect(auth()->user()->level . '/transaksi' . '/' . $pelanggan_id)->with('sukses', 'Item ditambahkan ke keranjang');
