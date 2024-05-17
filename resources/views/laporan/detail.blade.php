@@ -13,6 +13,7 @@
                     <table class="table table-striped" style="width: 100%">
                         <thead>
                             <tr>
+                                <td>No</td>
                                 <td>Kode</td>
                                 <td>Pelanggan</td>
                                 <td>Paket</td>
@@ -25,9 +26,16 @@
                             </tr>
                         </thead>
                         <tbody class="table-border-bottom-0">
+                            <?php $no = 1; ?>
                             @foreach($transaksi_detail as $data)
                             @if($data->kode == $item->kode)
                             <tr>
+                                <td>
+                                    <?php 
+                                    echo($no);
+                                    $no++;
+                                    ?>
+                                </td>
                                 <td>{{$data->kode}}</td>
                                 <td>{{$data->pelanggan->nama_pelanggan}}</td>
                                 <td>{{$data->paket->nama}}</td>

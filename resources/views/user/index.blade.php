@@ -40,8 +40,10 @@
                                 @method('DELETE')
                                 @csrf
                                 <a class="btn btn-warning btn-sm text-white" data-bs-toggle="modal" data-bs-target="#modal-edit{{$item->id}}">Edit</a>
+                                @if($item->id != auth()->user()->id)
                                 <button type="button" class="btn btn-danger btn-sm"
                                     onclick="confirmDelete({{$item->id}})">Hapus</button>
+                                @endif
                             </form>
                             @endif
                         </td>

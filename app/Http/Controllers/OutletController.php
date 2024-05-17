@@ -60,7 +60,7 @@ class OutletController extends Controller
         $outlet->alamat = $request->alamat;
         $outlet->update();
 
-        return redirect(auth()->user()->level . '/dashboard')->with('sukses', 'Data outlet berhasil update');
+        return redirect()->back()->with('sukses', 'Data outlet berhasil update');
     }
 
     /**

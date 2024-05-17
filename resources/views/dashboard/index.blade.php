@@ -95,11 +95,11 @@
             </div>
             <span class="fw-semibold d-block mb-1">Order Proses</span>
             <h3 class="card-title mb-2">{{$proses->count()}}</h3>
-            @if(auth()->user()->level == 'Karyawan' || auth()->user()->level == 'Pemilik')
-            <a href="/{{auth()->user()->level}}/order/proses" class="text-warning fw-semibold">Detail</a>
+            @if(auth()->user()->level == 'Admin' || auth()->user()->level == 'Pemilik')
+            <a href="" class="text-warning fw-semibold" data-bs-toggle="modal" data-bs-target="#proses">Lihat</a>
             @endif
-            @if(auth()->user()->level == 'Admin')
-            <a href="" class="text-warning fw-semibold" data-bs-toggle="modal" data-bs-target="#proses">Detail</a>
+            @if(auth()->user()->level == 'Karyawan' || auth()->user()->level == 'Pemilik')
+            <a href="/{{auth()->user()->level}}/order/proses" class="text-warning fw-semibold float-end">Detail</a>
             @endif
         </div>
     </div>
@@ -112,11 +112,11 @@
             </div>
             <span class="fw-semibold d-block mb-1">Siap Ambil</span>
             <h3 class="card-title mb-2">{{$siap_ambil->count()}}</h3>
-            @if(auth()->user()->level == 'Karyawan' || auth()->user()->level == 'Pemilik')
-            <a href="/{{auth()->user()->level}}/order/siap-ambil" class="text-info fw-semibold">Detail</a>
+            @if(auth()->user()->level == 'Admin' || auth()->user()->level == 'Pemilik')
+            <a href="" class="text-info fw-semibold" data-bs-toggle="modal" data-bs-target="#siap_ambil">Lihat</a>
             @endif
-            @if(auth()->user()->level == 'Admin')
-            <a href="" class="text-info fw-semibold" data-bs-toggle="modal" data-bs-target="#siap_ambil">Detail</a>
+            @if(auth()->user()->level == 'Karyawan' || auth()->user()->level == 'Pemilik')
+            <a href="/{{auth()->user()->level}}/order/siap-ambil" class="text-info fw-semibold float-end">Detail</a>
             @endif
         </div>
     </div>
@@ -129,11 +129,11 @@
             </div>
             <span class="fw-semibold d-block mb-1">Order Selesai</span>
             <h3 class="card-title mb-2">{{$selesai->count()}}</h3>
-            @if(auth()->user()->level == 'Karyawan' || auth()->user()->level == 'Pemilik')
-            <a href="/{{auth()->user()->level}}/order/selesai" class="text-success fw-semibold">Detail</a>
+            @if(auth()->user()->level == 'Admin' || auth()->user()->level == 'Pemilik')
+            <a href="" class="text-success fw-semibold" data-bs-toggle="modal" data-bs-target="#selesai">Lihat</a>
             @endif
-            @if(auth()->user()->level == 'Admin')
-            <a href="" class="text-success fw-semibold" data-bs-toggle="modal" data-bs-target="#selesai">Detail</a>
+            @if(auth()->user()->level == 'Karyawan' || auth()->user()->level == 'Pemilik')
+            <a href="/{{auth()->user()->level}}/order/selesai" class="text-success fw-semibold float-end">Detail</a>
             @endif
         </div>
     </div>
@@ -146,11 +146,11 @@
             </div>
             <span class="fw-semibold d-block mb-1">Belum Bayar</span>
             <h3 class="card-title mb-2">{{$belum_bayar->count()}}</h3>
-            @if(auth()->user()->level == 'Karyawan' || auth()->user()->level == 'Pemilik')
-            <a href="/{{auth()->user()->level}}/order" class="text-danger fw-semibold">Detail</a>
+            @if(auth()->user()->level == 'Admin' || auth()->user()->level == 'Pemilik')
+            <a href="" class="text-danger fw-semibold" data-bs-toggle="modal" data-bs-target="#belum_bayar">Lihat</a>
             @endif
-            @if(auth()->user()->level == 'Admin')
-            <a href="" class="text-danger fw-semibold" data-bs-toggle="modal" data-bs-target="#belum_bayar">Detail</a>
+            @if(auth()->user()->level == 'Karyawan' || auth()->user()->level == 'Pemilik')
+            <a href="/{{auth()->user()->level}}/order" class="text-danger fw-semibold float-end">Detail</a>
             @endif
         </div>
     </div>

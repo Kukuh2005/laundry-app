@@ -7,6 +7,7 @@ use App\Models\TransaksiSementara;
 use App\Models\TransaksiDetail;
 use App\Models\Pelanggan;
 use App\Models\Paket;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
@@ -136,10 +137,6 @@ class TransaksiController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Transaksi $transaksi)
-    {
-
-    }
 
     /**
      * Show the form for editing the specified resource.

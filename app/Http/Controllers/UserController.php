@@ -111,6 +111,8 @@ class UserController extends Controller
 
         if($user->level == 'Pemilik'){
             return redirect(auth()->user()->level . '/user')->with('gagal', 'Anda gagal mengkudeta pemilik');
+        }elseif($user->id == auth()->user()->id){
+            return redirect(auth()->user()->level . '/user')->with('gagal', 'Hapus akun gagal');
         }else{
             $user->delete();
             return redirect(auth()->user()->level . '/user')->with('sukses', 'Hapus user berhasil');

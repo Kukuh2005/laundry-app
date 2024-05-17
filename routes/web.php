@@ -77,9 +77,10 @@ Route::group(['middleware' => ['auth', 'ceklevel:Pemilik']], function(){
     
     Route::get('Pemilik/profile', [UserController::class, 'profile']);
     Route::put('Pemilik/profile/{id}/update', [UserController::class, 'profile_update']);
-
+    
     Route::get('Pemilik/laporan', [LaporanController::class, 'index']);
     Route::get('Pemilik/laporan/cari', [LaporanController::class, 'cari']);
+    Route::get('Pemilik/laporan/{kode}/print', [LaporanController::class, 'print']);
 });
 
 Route::group(['middleware' => ['auth', 'ceklevel:Admin']], function(){
@@ -105,6 +106,10 @@ Route::group(['middleware' => ['auth', 'ceklevel:Admin']], function(){
     
     Route::get('Admin/profile', [UserController::class, 'profile']);
     Route::put('Admin/profile/{id}/update', [UserController::class, 'profile_update']);
+
+    Route::get('Admin/laporan', [LaporanController::class, 'index']);
+    Route::get('Admin/laporan/cari', [LaporanController::class, 'cari']);
+    Route::get('Admin/laporan/{kode}/print', [LaporanController::class, 'print']);
 });
 
 Route::group(['middleware' => ['auth', 'ceklevel:Karyawan']], function(){

@@ -4,8 +4,12 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Transaksi;
+use App\Models\User;
+use App\Models\Pelanggan;
+use App\Models\Outlet;
 use App\Models\TransaksiDetail;
 use Carbon\Carbon;
+use Barryvdh\DomPDF\Facade\Pdf;
 
 class LaporanController extends Controller
 {
@@ -48,6 +52,21 @@ class LaporanController extends Controller
 
         return view('laporan.index', compact('transaksi', 'transaksi_detail', 'tanggal_dari', 'tanggal_sampai'));
 
+    }
+
+    public function print($kode)
+    {
+        $cari_user = Transaksi::where('kode', $kode)->first();
+        $pelanggan_id = $cari_user->pelanggan_id;
+        $pelanggan = Pelanggan::find($pelanggan_id);
+        $id_transaksi = Transaksi::where('kode', $kode)->first();
+        $transaksi = Transaksi::find($id_transaksi->id);
+        $transaksi_detail = TransaksiDetail::where('kode', $kode)->get();
+
+        $outlet = Outlet::find(1);
+
+        $pdf = Pdf::loadView('laporan.print', compact('transaksi', 'transaksi_detail', 'outlet', 'pelanggan'));
+        return $pdf->stream();
     }
 
     /**
