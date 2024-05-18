@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Transaksi {{$transaksi->pelanggan->nama_pelanggan}}</title>
+    <title>Transaksi {{$tanggal_dari}} Sampai {{$tanggal_sampai}}</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -60,42 +60,35 @@
     <h1 style="color: blue">{{$outlet->nama}}</h1>
     <h3>{{$outlet->alamat}}</h3>
     <p class="telepon">{{$outlet->telepon}}</p>
-    <h4 style="margin-bottom: -15;">{{$transaksi->kode}}</h4>
-    <h4 style="float: right">{{$transaksi->user->name}}</h4>
-
-    <p>{{$pelanggan->nama_pelanggan}}</p>
-    <p>{{$pelanggan->telepon}}</p>
-    <p>{{$pelanggan->alamat}}</p>
+    <h2 style="text-align: center">{{$tanggal_dari}} >>> {{$tanggal_sampai}}</h2>
 
     <table>
         <thead>
             <tr>
-                <th>Tanggal Selesai</th>
-                <th>Paket</th>
-                <th>Jumlah</th>
+                <th>Kode</th>
+                <th>Tanggal</th>
+                <th>Pelanggan</th>
                 <th>Status</th>
-                <th>Sub Total</th>  
+                <th>Sub Total</th>
             </tr>
         </thead>
         <tbody>
-            @foreach($transaksi_detail as $item)
+            @foreach($transaksi as $item)
             <tr>
-                <td>{{$item->tanggal_selesai}}</td>
-                <td>{{$item->Paket->nama}}</td>
-                <td>{{$item->jumlah}}</td>
-                @if($item->status == 'Selesai')
-                <td style="background-color: blue; color: white; font-weight: bold;">{{$item->status}}</td>
-                @elseif($item->status == 'Proses')
-                <td style="background-color: orange; color: white; font-weight: bold;">{{$item->status}}</td>
-                @elseif($item->status == 'Siap Ambil')
-                <td style="background-color: skyBlue; color: white; font-weight: bold;">{{$item->status}}</td>
+                <td>{{$item->kode}}</td>
+                <td>{{$item->tanggal}}</td>
+                <td>{{$item->pelanggan->nama_pelanggan}}</td>
+                @if($item->status_pembayaran == 'Sudah Bayar')
+                <td style="background-color: green; color: white; font-weight: bold;">{{$item->status_pembayaran}}</td>
+                @elseif($item->status_pembayaran == 'Belum Bayar')
+                <td style="background-color: red; color: white; font-weight: bold;">{{$item->status_pembayaran}}</td>
                 @endif
                 <td>{{$item->formatRupiah('total')}}</td>
             </tr>
             @endforeach
             <tr>
-            <td colspan="4" style="background-color: grey; color: white; font-weight: bold;">Total</td>
-                <td>{{$transaksi->formatRupiah('total')}}</td>
+                <td colspan="4" style="background-color: grey; color: white; font-weight: bold;">Total</td>
+                <td>{{$total}}</td>
             </tr>
         </tbody>
     </table>

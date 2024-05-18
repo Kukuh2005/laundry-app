@@ -102,6 +102,9 @@
                                                     for="basic-default-company" style="width: 50%">Paket</label>
                                                 <label class="col-form-label text-start" style="width: 50%">{{$item->paket->nama}}</label>
                                                 <label class="col-form-label text-end bg-secondary text-white"
+                                                    for="basic-default-company" style="width: 50%">Jenis</label>
+                                                <label class="col-form-label text-start" style="width: 50%">{{$item->paket->jenis}}</label>
+                                                <label class="col-form-label text-end bg-secondary text-white"
                                                     for="basic-default-company" style="width: 50%">Jumlah</label>
                                                 <label class="col-form-label text-start" style="width: 50%">{{$item->jumlah}}</label>
                                                 <label class="col-form-label text-end bg-secondary text-white"

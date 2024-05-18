@@ -81,6 +81,7 @@ Route::group(['middleware' => ['auth', 'ceklevel:Pemilik']], function(){
     Route::get('Pemilik/laporan', [LaporanController::class, 'index']);
     Route::get('Pemilik/laporan/cari', [LaporanController::class, 'cari']);
     Route::get('Pemilik/laporan/{kode}/print', [LaporanController::class, 'print']);
+    Route::get('Pemilik/laporan/{tanggal_dari}/{tanggal_sampai}/print', [LaporanController::class, 'printTanggal']);
 });
 
 Route::group(['middleware' => ['auth', 'ceklevel:Admin']], function(){

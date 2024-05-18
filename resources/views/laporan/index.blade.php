@@ -7,24 +7,24 @@
 @section('content')
 <div class="col-md-12">
     <div class="card mb-2">
-        <form action="/{{auth()->user()->level}}/laporan/cari" method="GET">
+        <form action="/{{auth()->user()->level}}/laporan/cari" method="GET" id="form-cari-print">
             <div class="row m-2">
                 @csrf
                 <div class="col-md-4 d-flex mb-2 mt-2">
                     <label class="form-label m-3" for="basic-default-message">Dari</label>
-                    <input type="date" class="form-control" name="tanggal_dari" id="" value="{{$tanggal_dari}}"
+                    <input type="date" class="form-control" name="tanggal_dari" id="tanggal-dari" value="{{$tanggal_dari}}"
                         max="<?php echo date('Y-m-d'); ?>">
                 </div>
                 <div class="col-md-4 d-flex mb-2 mt-2">
                     <label class="form-label m-3" for="basic-default-message">Sampai</label>
-                    <input type="date" class="form-control" name="tanggal_sampai" id="" value="{{$tanggal_sampai}}"
+                    <input type="date" class="form-control" name="tanggal_sampai" id="tanggal-sampai" value="{{$tanggal_sampai}}"
                         max="<?php echo date('Y-m-d'); ?>">
                 </div>
                 <div class="col-md-4 mb-2 mt-2 d-flex">
                     <button type="submit" class="btn btn-success btn-lg me-2" style="width: 100%"><i
                             class="fas fa-search"></i> Cari</button>
-                    <a href="/{{auth()->user()->level}}/laporan/{{$tanggal_dari}}/{{$tanggal_sampai}}/print" class="btn btn-danger btn-lg" style="width: 100%"><i
-                            class="fas fa-print"></i> Print</a>
+                    <button type="button" onclick="printTanggal()" class="btn btn-danger btn-lg" style="width: 100%"><i
+                            class="fas fa-print"></i> Print</button>
                 </div>
             </div>
         </form>
@@ -65,7 +65,7 @@
                         <td>
                             <!-- <a href="/transaksi/{{$item->kode}}/edit" class="btn btn-warning btn-sm d-block m-2">Edit</a> -->
                             <a href="#" class="btn btn-primary btn-sm d-block mb-2"  data-bs-toggle="modal" data-bs-target="#modal-detail{{$item->kode}}">Detail</a>
-                            <a href="/{{auth()->user()->level}}/laporan/{{$item->kode}}/print" class="btn btn-danger btn-sm d-block">Print</a>
+                            <a href="/{{auth()->user()->level}}/laporan/{{$item->kode}}/print" target="_blank" class="btn btn-danger btn-sm d-block">Print</a>
                         </td>
                     </tr>
                     @endforeach
@@ -81,6 +81,13 @@
     $(document).ready(function () {
         $('#table').DataTable();
     });
+</script>
+<script>
+    function printTanggal(){
+        var tanggal_dari = document.getElementById('tanggal-dari').value;
+        var tanggal_sampai = document.getElementById('tanggal-sampai').value;
 
+        window.open('/{{auth()->user()->level}}/laporan/' + tanggal_dari + '/' + tanggal_sampai + '/print', '_blank');
+    }
 </script>
 @endpush

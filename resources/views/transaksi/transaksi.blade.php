@@ -103,7 +103,6 @@
 </script>
 <script>
     function cekBayar(){
-        var btn_simpan = document.getElementById('btn-simpan');
         var bayar = parseFloat(document.getElementById('bayar').value);
         var total = parseFloat(document.getElementById('total').value);
         var form = document.getElementById('form-bayar');

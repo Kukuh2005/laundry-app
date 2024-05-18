@@ -68,7 +68,26 @@ class LaporanController extends Controller
         $pdf = Pdf::loadView('laporan.print', compact('transaksi', 'transaksi_detail', 'outlet', 'pelanggan'));
         return $pdf->stream();
     }
+    
+    public function printTanggal($tanggal_dari, $tanggal_sampai)
+    {
+        $tanggal_dari_format = \Carbon\Carbon::parse($tanggal_dari)->format('Y-m-d');
+        $tanggal_sampai_format = \Carbon\Carbon::parse($tanggal_sampai)->format('Y-m-d');
 
+        $transaksi = Transaksi::whereBetween(\DB::raw('DATE(tanggal)'), [$tanggal_dari_format, $tanggal_sampai_format])->get();
+        $sub_total = 0;
+        
+        foreach($transaksi as $data){
+            if($data->status_pembayaran == "Sudah Bayar"){
+                $sub_total += $data->total;
+            }
+        }
+
+        $total = number_format($sub_total, 0, ',', '.');
+
+        $pdf = Pdf::loadView('laporan.printTanggal', compact('transaksi', 'total', 'tanggal_dari', 'tanggal_sampai'));
+        return $pdf->stream();
+    }
     /**
      * Display the specified resource.
      */
