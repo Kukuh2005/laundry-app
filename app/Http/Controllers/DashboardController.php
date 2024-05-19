@@ -11,7 +11,7 @@ use Carbon\Carbon;
 class DashboardController extends Controller
 {
     public function index(){
-        $proses = TransaksiDetail::where('status', 'Proses')->get();
+        $proses = TransaksiDetail::where('status', 'Proses')->orderBy('tanggal_selesai', 'asc')->get();
         $siap_ambil = TransaksiDetail::where('status', 'Siap Ambil')->get();
         $selesai = TransaksiDetail::where('status', 'Selesai')->orderBy('tanggal_selesai', 'asc')->get();
         $belum_bayar = Transaksi::where('status_pembayaran', 'Belum Bayar')->get();

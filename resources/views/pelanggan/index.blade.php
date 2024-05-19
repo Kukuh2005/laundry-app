@@ -32,7 +32,7 @@
                             <form action="/{{auth()->user()->level}}/pelanggan/{{$item->id}}/delete" id="delete-form">
                                 @method('DELETE')
                                 @csrf
-                                <a href="/{{auth()->user()->level}}/pelanggan/{{$item->id}}/edit" class="btn btn-warning btn-sm">Edit</a>
+                                <button type="button" class="btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#modal-edit{{$item->id}}">Edit</button>
                                 <button type="button" class="btn btn-danger btn-sm"
                                     onclick="confirmDelete({{$item->id}})">Hapus</button>
                             </form>
@@ -45,6 +45,7 @@
     </div>
 </div>
 @include('pelanggan.form')
+@include('pelanggan.edit')
 @endsection
 @push('script')
 <script>

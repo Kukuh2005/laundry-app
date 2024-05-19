@@ -45,7 +45,7 @@
                             <form action="/{{auth()->user()->level}}/paket/{{$item->id}}/delete">
                                 @method('DELETE')
                                 @csrf
-                                <a href="/{{auth()->user()->level}}/paket/{{$item->id}}/edit" class="btn btn-warning btn-sm">Edit</a>
+                                <button type="button" class="btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#modal-edit{{$item->id}}">Edit</button>
                                 <button type="button" class="btn btn-danger btn-sm" onclick="confirmDelete({{$item->id}})">Hapus</button>
                             </form>
                         </td>
@@ -57,6 +57,7 @@
     </div>
 </div>
 @include('paket.form')
+@include('paket.edit')
 @endsection
 @push('script')
 <script>

@@ -40,7 +40,8 @@
                         <td>{{$item->user->name}}</td>
                         <td>
                             <!-- <a href="/transaksi/{{$item->kode}}/edit" class="btn btn-warning btn-sm d-block m-2">Edit</a> -->
-                            <a href="#" class="btn btn-primary btn-sm d-block"  data-bs-toggle="modal" data-bs-target="#modal-detail{{$item->kode}}">Detail</a>
+                            <a href="#" class="btn btn-primary btn-sm d-block mb-2"  data-bs-toggle="modal" data-bs-target="#modal-detail{{$item->kode}}">Detail</a>
+                            <a href="/{{auth()->user()->level}}/laporan/{{$item->kode}}/print" target="_blank" class="btn btn-danger btn-sm d-block">Print</a>
                         </td>
                     </tr>
                     @endforeach

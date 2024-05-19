@@ -43,13 +43,11 @@ Route::group(['middleware' => ['auth', 'ceklevel:Pemilik']], function(){
     Route::get('Pemilik/paket/satuan', [PaketController::class, 'satuan']);
     Route::post('Pemilik/paket/store', [PaketController::class, 'store']);
     Route::get('Pemilik/paket/{id}/delete', [PaketController::class, 'destroy']);
-    Route::get('Pemilik/paket/{id}/edit', [PaketController::class, 'edit']);
     Route::put('Pemilik/paket/{id}/update', [PaketController::class, 'update']);
     
     Route::get('Pemilik/pelanggan', [PelangganController::class, 'index']);
     Route::post('Pemilik/pelanggan/store', [PelangganController::class, 'store']);
     Route::get('Pemilik/pelanggan/{id}/delete', [PelangganController::class, 'destroy']);
-    Route::get('Pemilik/pelanggan/{id}/edit', [PelangganController::class, 'edit']);
     Route::put('Pemilik/pelanggan/{id}/update', [PelangganController::class, 'update']);
     
     Route::get('Pemilik/transaksi', [TransaksiSementaraController::class, 'index']);
@@ -91,13 +89,11 @@ Route::group(['middleware' => ['auth', 'ceklevel:Admin']], function(){
     Route::get('Admin/paket/satuan', [PaketController::class, 'satuan']);
     Route::post('Admin/paket/store', [PaketController::class, 'store']);
     Route::get('Admin/paket/{id}/delete', [PaketController::class, 'destroy']);
-    Route::get('Admin/paket/{id}/edit', [PaketController::class, 'edit']);
     Route::put('Admin/paket/{id}/update', [PaketController::class, 'update']);
     
     Route::get('Admin/pelanggan', [PelangganController::class, 'index']);
     Route::post('Admin/pelanggan/store', [PelangganController::class, 'store']);
     Route::get('Admin/pelanggan/{id}/delete', [PelangganController::class, 'destroy']);
-    Route::get('Admin/pelanggan/{id}/edit', [PelangganController::class, 'edit']);
     Route::put('Admin/pelanggan/{id}/update', [PelangganController::class, 'update']);
 
     Route::get('Admin/user', [UserController::class, 'index']);
@@ -119,7 +115,6 @@ Route::group(['middleware' => ['auth', 'ceklevel:Karyawan']], function(){
     Route::get('Karyawan/pelanggan', [PelangganController::class, 'index']);
     Route::post('Karyawan/pelanggan/store', [PelangganController::class, 'store']);
     Route::get('Karyawan/pelanggan/{id}/delete', [PelangganController::class, 'destroy']);
-    Route::get('Karyawan/pelanggan/{id}/edit', [PelangganController::class, 'edit']);
     Route::put('Karyawan/pelanggan/{id}/update', [PelangganController::class, 'update']);
     
     Route::get('Karyawan/transaksi', [TransaksiSementaraController::class, 'index']);

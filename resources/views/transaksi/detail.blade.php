@@ -14,7 +14,6 @@
                         <thead>
                             <tr>
                                 <td>No</td>
-                                <td>Kode</td>
                                 <td>Pelanggan</td>
                                 <td>Paket</td>
                                 <td>Jenis</td>
@@ -36,7 +35,6 @@
                                     $no++;
                                     ?>
                                 </td>
-                                <td>{{$data->kode}}</td>
                                 <td>{{$data->pelanggan->nama_pelanggan}}</td>
                                 <td>{{$data->paket->nama}}</td>
                                 <td><span class="badge bg-label-primary me-1">{{$data->paket->jenis}}</span></td>

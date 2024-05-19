@@ -65,9 +65,7 @@ class PaketController extends Controller
      */
     public function edit($id)
     {
-        $paket = Paket::find($id);
-
-        return view('paket.edit', compact('paket'));
+        
     }
 
     /**
