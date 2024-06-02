@@ -14,15 +14,17 @@ class PaketController extends Controller
     public function index()
     {
         $paket = Paket::where('jenis', 'kiloan')->get();
+        $data = "Kiloan";
 
-        return view('paket.index', compact('paket'));
+        return view('paket.index', compact('paket', 'data'));
     }
 
     public function satuan()
     {
         $paket = Paket::where('jenis', 'satuan')->get();
+        $data = "Satuan";
 
-        return view('paket.index', compact('paket'));
+        return view('paket.index', compact('paket', 'data'));
     }
 
     /**

@@ -2,14 +2,28 @@
 
 @section('title', 'User')
 
-@section('content-header', 'Data User')
+@section('content-header')
+    Data {{$data}}
+@endsection
 
 @section('content')
+<div class="col-md-10 mb-2">
+    <div class="card">
+        <div class="btn-group" role="group" aria-label="Basic example">
+            @if(auth()->user()->level == 'Pemilik')
+            <a href="/{{auth()->user()->level}}/karyawan" class="btn btn-outline-primary">Karyawan</a>
+            <a href="/{{auth()->user()->level}}/karyawan/admin" class="btn btn-outline-primary">Admin</a>
+            @endif
+        </div>
+    </div>
+</div>
+<div class="col-md-2 mb-2">
+    <div class="card">
+        <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#modal-tambah">Tambah</button>
+    </div>
+</div>
 <div class="col-md-12">
     <div class="card">
-        <div class="btn-tambah m-2">
-            <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#modal-tambah">Tambah</button>
-        </div>
         <div class="table-responsive text-nowrap mt-2 mb-2">
             <table class="table table-striped" id="table">
                 <thead>
@@ -39,7 +53,8 @@
                             <form action="/{{auth()->user()->level}}/user/{{$item->id}}/delete" id="delete-form">
                                 @method('DELETE')
                                 @csrf
-                                <a class="btn btn-warning btn-sm text-white" data-bs-toggle="modal" data-bs-target="#modal-edit{{$item->id}}">Edit</a>
+                                <a class="btn btn-warning btn-sm text-white" data-bs-toggle="modal"
+                                    data-bs-target="#modal-edit{{$item->id}}">Edit</a>
                                 @if($item->id != auth()->user()->id)
                                 <button type="button" class="btn btn-danger btn-sm"
                                     onclick="confirmDelete({{$item->id}})">Hapus</button>
@@ -97,7 +112,8 @@
                 if (willDelete) {
                     const form = document.getElementById('delete-form');
                     // Setelah pengguna mengkonfirmasi penghapusan, Anda bisa mengirim form ke server
-                    form.action = '/{{auth()->user()->level}}/user/' + id + '/delete'; // Ubah aksi form sesuai dengan ID yang sesuai
+                    form.action = '/{{auth()->user()->level}}/user/' + id +
+                    '/delete'; // Ubah aksi form sesuai dengan ID yang sesuai
                     form.submit();
                 }
             });

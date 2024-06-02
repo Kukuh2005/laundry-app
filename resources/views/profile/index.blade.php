@@ -30,7 +30,8 @@
                         <input class="form-control" type="password" id="email" name="password_baru" placeholder="Opsional">
                     </div>
                 <div class="mt-2">
-                    <button type="submit" class="btn btn-primary me-2">Simpan</button>
+                    <a href="/{{auth()->user()->level}}/user" class="btn btn-warning">Kembali</a>
+                    <button type="submit" class="btn btn-primary float-end">Simpan</button>
                 </div>
             </form>
         </div>

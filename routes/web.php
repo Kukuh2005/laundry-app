@@ -68,10 +68,11 @@ Route::group(['middleware' => ['auth', 'ceklevel:Pemilik']], function(){
     
     Route::put('Pemilik/outlet/update', [OutletController::class, 'update']);
 
-    Route::get('Pemilik/user', [UserController::class, 'index']);
-    Route::post('Pemilik/user/store', [UserController::class, 'store']);
-    Route::get('Pemilik/user/{id}/delete', [UserController::class, 'destroy']);
-    Route::put('Pemilik/user/{id}/update', [UserController::class, 'update']);
+    Route::get('Pemilik/karyawan', [UserController::class, 'index']);
+    Route::get('Pemilik/karyawan/admin', [UserController::class, 'admin']);
+    Route::post('Pemilik/karyawan/store', [UserController::class, 'store']);
+    Route::get('Pemilik/karyawan/{id}/delete', [UserController::class, 'destroy']);
+    Route::put('Pemilik/karyawan/{id}/update', [UserController::class, 'update']);
     
     Route::get('Pemilik/profile', [UserController::class, 'profile']);
     Route::put('Pemilik/profile/{id}/update', [UserController::class, 'profile_update']);
@@ -96,10 +97,10 @@ Route::group(['middleware' => ['auth', 'ceklevel:Admin']], function(){
     Route::get('Admin/pelanggan/{id}/delete', [PelangganController::class, 'destroy']);
     Route::put('Admin/pelanggan/{id}/update', [PelangganController::class, 'update']);
 
-    Route::get('Admin/user', [UserController::class, 'index']);
-    Route::post('Admin/user/store', [UserController::class, 'store']);
-    Route::get('Admin/user/{id}/delete', [UserController::class, 'destroy']);
-    Route::put('Admin/user/{id}/update', [UserController::class, 'update']);
+    Route::get('Admin/karyawan', [UserController::class, 'index']);
+    Route::post('Admin/karyawan/store', [UserController::class, 'store']);
+    Route::get('Admin/karyawan/{id}/delete', [UserController::class, 'destroy']);
+    Route::put('Admin/karyawan/{id}/update', [UserController::class, 'update']);
     
     Route::get('Admin/profile', [UserController::class, 'profile']);
     Route::put('Admin/profile/{id}/update', [UserController::class, 'profile_update']);

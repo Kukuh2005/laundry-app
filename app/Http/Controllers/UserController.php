@@ -13,9 +13,18 @@ class UserController extends Controller
      */
     public function index()
     {
-        $user = User::all();
+        $user = User::where('level', 'Karyawan')->get();
+        $data = "Karyawan";
 
-        return view('user.index', compact('user'));
+        return view('user.index', compact('user', 'data'));
+    }
+
+    public function admin()
+    {
+        $user = User::where('level', 'Admin')->get();
+        $data = "Admin";
+
+        return view('user.index', compact('user', 'data'));
     }
 
     /**
@@ -47,9 +56,9 @@ class UserController extends Controller
             $user->save();
     
     
-            return redirect(auth()->user()->level . '/user')->with('sukses', 'Berhasil tambah user');
+            return redirect()->back()->with('sukses', 'Berhasil tambah user');
         }catch(\Exception $e){
-            return redirect(auth()->user()->level . '/user')->with('gagal', 'Tidak berhasil tambah user. Pesan kesalahan: '.$e->getMessage());
+            return redirect()->back()->with('gagal', 'Tidak berhasil tambah user. Pesan kesalahan: '.$e->getMessage());
         }
     }
 
@@ -81,7 +90,7 @@ class UserController extends Controller
         $user->level = $request->level;
         $user->update();
 
-        return redirect(auth()->user()->level . '/user')->with('sukses', 'Edit user berhasil');
+        return redirect()->back()->with('sukses', 'Edit user berhasil');
     }
 
     public function profile(){
@@ -110,12 +119,12 @@ class UserController extends Controller
         $user = User::find($id);
 
         if($user->level == 'Pemilik'){
-            return redirect(auth()->user()->level . '/user')->with('gagal', 'Anda gagal mengkudeta pemilik');
+            return redirect()->back()->with('gagal', 'Anda gagal mengkudeta pemilik');
         }elseif($user->id == auth()->user()->id){
-            return redirect(auth()->user()->level . '/user')->with('gagal', 'Hapus akun gagal');
+            return redirect()->back()->with('gagal', 'Hapus akun gagal');
         }else{
             $user->delete();
-            return redirect(auth()->user()->level . '/user')->with('sukses', 'Hapus user berhasil');
+            return redirect()->back()->with('sukses', 'Hapus akun berhasil');
         }
     }
 }

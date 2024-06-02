@@ -2,7 +2,9 @@
 
 @section('title', 'Paket')
 
-@section('content-header', 'Data Paket')
+@section('content-header')
+    Data Paket {{$data}}
+@endsection
 
 @section('content')
 <div class="col-md-10 mb-2">

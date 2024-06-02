@@ -2,7 +2,9 @@
 
 @section('title', 'Order')
 
-@section('content-header', 'Data Order')
+@section('content-header')
+    Data Order {{$data}}
+@endsection
 
 @section('content')
 <div class="col-md-12 mb-2">

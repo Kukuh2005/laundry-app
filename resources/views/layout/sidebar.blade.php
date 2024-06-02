@@ -69,9 +69,9 @@
                         </a>
                     </li>
                     <li class="menu-item">
-                        <a href="/{{auth()->user()->level}}/user" class="menu-link">
+                        <a href="/{{auth()->user()->level}}/karyawan" class="menu-link">
                             <i class="fas fa-users me-3"></i>
-                            <div data-i18n="Analytics">User</div>
+                            <div data-i18n="Analytics">Karyawan</div>
                         </a>
                     </li>
                     @endif

@@ -18,8 +18,9 @@ class OrderController extends Controller
         $proses = TransaksiDetail::where('status', 'Proses')->get();
         $siap_ambil = TransaksiDetail::where('status', 'Siap Ambil')->get();
         $selesai = TransaksiDetail::where('status', 'Selesai')->get();
+        $data = "Belum Bayar";
 
-        return view('order.index', compact('transaksi', 'belum_bayar', 'proses', 'siap_ambil', 'selesai'));
+        return view('order.index', compact('transaksi', 'belum_bayar', 'proses', 'siap_ambil', 'selesai', 'data'));
     }
 
     public function proses(){
@@ -28,8 +29,9 @@ class OrderController extends Controller
         $proses = TransaksiDetail::where('status', 'Proses')->get();
         $siap_ambil = TransaksiDetail::where('status', 'Siap Ambil')->get();
         $selesai = TransaksiDetail::where('status', 'Selesai')->get();
+        $data = "Proses";
 
-        return view('order.detailOrder', compact('transaksi', 'belum_bayar', 'proses', 'siap_ambil', 'selesai'));
+        return view('order.detailOrder', compact('transaksi', 'belum_bayar', 'proses', 'siap_ambil', 'selesai', 'data'));
     }
 
     public function siap(){
@@ -38,8 +40,9 @@ class OrderController extends Controller
         $proses = TransaksiDetail::where('status', 'Proses')->get();
         $siap_ambil = TransaksiDetail::where('status', 'Siap Ambil')->get();
         $selesai = TransaksiDetail::where('status', 'Selesai')->get();
+        $data = "Siap Ambil";
 
-        return view('order.detailOrder', compact('transaksi', 'belum_bayar', 'proses', 'siap_ambil', 'selesai'));
+        return view('order.detailOrder', compact('transaksi', 'belum_bayar', 'proses', 'siap_ambil', 'selesai', 'data'));
     }
 
     public function selesai(){
@@ -48,8 +51,9 @@ class OrderController extends Controller
         $proses = TransaksiDetail::where('status', 'Proses')->get();
         $siap_ambil = TransaksiDetail::where('status', 'Siap Ambil')->get();
         $selesai = TransaksiDetail::where('status', 'Selesai')->orderBy('tanggal_selesai', 'desc')->get();
+        $data = "Selesai";
 
-        return view('order.detailOrder', compact('transaksi', 'belum_bayar', 'proses', 'siap_ambil', 'selesai'));
+        return view('order.detailOrder', compact('transaksi', 'belum_bayar', 'proses', 'siap_ambil', 'selesai', 'data'));
     }
     
     public function update(Request $request, $id){
