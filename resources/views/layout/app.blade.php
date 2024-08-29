@@ -150,6 +150,14 @@
       position: 'topRight'
       });
     </script>
+    @elseif(session('warning'))
+    <script>
+      iziToast.warning({
+      title: 'Warning',
+      message: '{{session('warning')}}',
+      position: 'topRight'
+      });
+    </script>
     @endif
 </body>
 </html>

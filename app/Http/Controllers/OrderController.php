@@ -60,13 +60,17 @@ class OrderController extends Controller
         
         if($request->status_pembayaran != null){
             $transaksi = Transaksi::find($id);
-            $transaksi->status_pembayaran = $request->status_pembayaran;
-            $transaksi->bayar = $request->bayar;
-            $kembali = $request->bayar - $transaksi->total;
-            $transaksi->kembali = $kembali;
-            $transaksi->update();
-            
-            return redirect(auth()->user()->level . '/order')->with('sukses', 'Update data berhasil');
+            if($transaksi->total < $request->bayar){
+                return redirect(auth()->user()->level . '/order')->with('warning', 'Jumlah bayar kurang');
+            }else{
+                $transaksi->status_pembayaran = $request->status_pembayaran;
+                $transaksi->bayar = $request->bayar;
+                $kembali = $request->bayar - $transaksi->total;
+                $transaksi->kembali = $kembali;
+                $transaksi->update();
+                
+                return redirect(auth()->user()->level . '/order')->with('sukses', 'Update data berhasil');
+            }
         }else{
             $transaksi = TransaksiDetail::find($id);
             $cek = Transaksi::where('kode' ,$transaksi->kode)->first();
