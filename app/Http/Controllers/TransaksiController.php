@@ -49,7 +49,7 @@ class TransaksiController extends Controller
             $ambil = Transaksi::all()->last();
             $urut = (int)substr($ambil->kode, -8) + 1;
             $nomor = "NOTA-" . $tahun_bulan . $urut;
-        }
+        } 
 
         if($request->status_pembayaran == "Belum Bayar"){
             $kembali = $request->bayar - $request->total;

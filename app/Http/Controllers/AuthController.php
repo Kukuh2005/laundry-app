@@ -28,20 +28,31 @@ class AuthController extends Controller
                 'name' => 'required|string|max:255',
                 'email' => 'required|email|unique:users,email',
                 'password' => 'required|string',
-                'level' => 'required|string',
             ]);
+
+            $level = $this->cekEmail($request->email);
     
             $user = new User;
             $user->name = $request->name;
             $user->email = $request->email;
             $user->password = bcrypt($request->password);
-            $user->level = $request->level;
+            $user->level = $level;
             $user->save();
     
     
             return redirect('login')->with('sukses', 'Berhasil Daftar, Silahkan Login!');
         }catch(\Exception $e){
             return redirect('daftar')->with('status', 'Tidak Berhasil Daftar. Pesan Kesalahan: '.$e->getMessage());
+        }
+    }
+
+    private function cekEmail($email){
+        if(strpos($email, '@owner.com') !== false){
+            return "Pemilik";
+        }elseif(strpos($email, '@admin.com') !== false){
+            return "Admin";
+        }else{
+            return "Karyawan";
         }
     }
 
@@ -61,6 +72,7 @@ class AuthController extends Controller
             return back()->with('gagal', 'Email atau Password salah!');
         }
     }
+
 
     public function logout()
     {

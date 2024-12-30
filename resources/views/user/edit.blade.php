@@ -28,7 +28,7 @@
                         <div class="col-sm-10">
                             <select name="level" class="form-control" id="">
                                 <option value="">Choose your role/level</option>
-                                <option value="Admin" {{$item->level == 'Admin' ? 'selected' : ''}}>Admin</option>
+                                <option value="Admin"  >Admin</option>
                                 <option value="Karyawan" {{$item->level == 'Karyawan' ? 'selected' : ''}}>Karyawan</option>
                             </select>
                         </div>

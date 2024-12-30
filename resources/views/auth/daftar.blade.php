@@ -168,19 +168,6 @@
                     <span class="input-group-text cursor-pointer"><i class="bx bx-hide"></i></span>
                   </div>
                 </div>
-                <div class="mb-3">
-                  <label for="level" class="form-label">Level</label>
-                  <select name="level" class="form-control" id="">
-                    <option value="">Choose your role/level</option>
-                    @if($user->where('level', 'Pemilik')->count() == 0)
-                    <option value="Pemilik">Pemilik</option>
-                    @endif
-                    @if($user->where('level', 'Admin')->count() == 0)
-                    <option value="Admin">Admin</option>
-                    @endif
-                    <option value="Karyawan">Karyawan</option>
-                  </select>
-                </div>
                 <button class="btn btn-primary d-grid w-100">Daftar</button>
               </form>
 
