@@ -20,10 +20,16 @@ class AuthController extends Controller
         
         return view('auth.daftar', compact('user'));
     }
-
+    
     public function store(Request $request)
     {
         try{
+            // $email = User::where('email', $request->email)->exists();
+
+            // if($email){
+            //     return back()->with('status', 'Email sudah terdaftar!');
+            // }
+
             $request->validate([
                 'name' => 'required|string|max:255',
                 'email' => 'required|email|unique:users,email',
@@ -38,8 +44,7 @@ class AuthController extends Controller
             $user->password = bcrypt($request->password);
             $user->level = $level;
             $user->save();
-    
-    
+                
             return redirect('login')->with('sukses', 'Berhasil Daftar, Silahkan Login!');
         }catch(\Exception $e){
             return redirect('daftar')->with('status', 'Tidak Berhasil Daftar. Pesan Kesalahan: '.$e->getMessage());
@@ -47,12 +52,16 @@ class AuthController extends Controller
     }
 
     private function cekEmail($email){
-        if(strpos($email, '@owner.com') !== false){
-            return "Pemilik";
-        }elseif(strpos($email, '@admin.com') !== false){
-            return "Admin";
+        $cekOwner = User::where('level', 'Pemilik')->count();
+
+        if($cekOwner == 0){
+            return 'Pemilik';
         }else{
-            return "Karyawan";
+            if(strpos($email, '@admin.com') !== false){
+                return "Admin";
+            }else{
+                return "Karyawan";
+            }
         }
     }
 
@@ -63,13 +72,19 @@ class AuthController extends Controller
 
     public function postlogin(Request $request): RedirectResponse
     {
-        if(Auth::attempt($request->only('email', 'password'))){
-            $user = Auth::user();
+        $email = User::where('email', $request->email)->exists();
 
-            return redirect($user->level . '/dashboard');
-        }
-        else {
-            return back()->with('gagal', 'Email atau Password salah!');
+        if(!$email){
+            return back()->with('gagal' , 'Email belum terdaftar!');
+        }else{
+            if(Auth::attempt($request->only('email', 'password'))){
+                $user = Auth::user();
+    
+                return redirect($user->level . '/dashboard');
+            }
+            else {
+                return back()->with('gagal', 'Email atau Password salah!');
+            }
         }
     }
 
